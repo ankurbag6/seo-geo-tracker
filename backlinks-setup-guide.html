@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Backlink Engine · Full Setup Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F0E8;--warm:#E8DFD3;--white:#FFFFFF;--dark:#2D2320;--mid:#7A6B62;
+  --berry:#A8174A;--pink:#F2B8C6;--gingham:#E8A0A0;--sage:#6B8856;--dark-sage:#3D5230;--burgundy:#7A1B1B;
+  --font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',-apple-system,sans-serif;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:14px;--radius-full:999px;
+  --shadow-card:0 2px 12px rgba(45,35,32,.06);--shadow-lift:0 4px 20px rgba(45,35,32,.10);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-body);background:var(--cream);color:var(--dark);line-height:1.65;padding:30px 24px 64px;}
+.wrap{max-width:760px;margin:0 auto;}
+h1{font-family:var(--font-display);font-size:38px;font-weight:800;line-height:1.12;}
+h2{font-family:var(--font-display);font-size:24px;font-weight:700;line-height:1.2;}
+h3{font-family:var(--font-display);font-size:17px;font-weight:600;}
+p{font-size:14.5px;color:var(--dark);margin-bottom:12px;}
+.lead{font-size:16px;color:var(--mid);}
+.divider{width:48px;height:3px;background:var(--berry);border-radius:2px;margin:14px 0 18px;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1.5px solid var(--berry);color:var(--berry);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:var(--radius-full);}
+.badge::before{content:'';width:6px;height:6px;background:var(--berry);border-radius:50%;}
+.section{margin-top:38px;}
+.step-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin-bottom:6px;}
+.card{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-card);margin:16px 0;}
+.card-accent-berry{border-left:4px solid var(--berry);}
+.card-accent-sage{border-left:4px solid var(--sage);}
+.prompt-box{background:#FBF7F2;border:1px solid var(--warm);border-left:4px solid var(--berry);border-radius:var(--radius-md);padding:16px 20px;margin:12px 0 18px;}
+.prompt-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin-bottom:8px;}
+.prompt-text{font-size:13px;color:var(--dark);line-height:1.7;font-family:'DM Sans',monospace;white-space:pre-wrap;}
+.cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0;}
+.cost{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:16px;text-align:center;}
+.cost-num{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--berry);}
+.cost-label{font-size:11.5px;color:var(--mid);margin-top:4px;}
+.tag{display:inline-block;padding:3px 9px;border-radius:5px;font-size:11px;font-weight:600;}
+.tag-sage{background:#F1F4EF;color:var(--sage);border:1px solid #C8D9BE;}
+.tag-amber{background:#FEF8E8;color:#8B6800;border:1px solid #E8D8A0;}
+.tag-burg{background:#FDF0F0;color:var(--burgundy);border:1px solid #E8C0C0;}
+a{color:var(--berry);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gingham);}
+a:hover{opacity:.8;}
+ul{margin:0 0 12px 20px;}li{font-size:14.5px;margin-bottom:7px;}
+.steps-num{counter-reset:s;list-style:none;margin-left:0;}
+.steps-num li{counter-increment:s;position:relative;padding-left:38px;margin-bottom:14px;}
+.steps-num li::before{content:counter(s);position:absolute;left:0;top:0;background:var(--berry);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.loop{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:16px 20px;font-family:var(--font-display);font-size:15px;color:var(--dark);text-align:center;font-weight:600;}
+.dark-panel{background:var(--dark);border-radius:var(--radius-lg);padding:30px;margin-top:20px;}
+.dark-panel h2,.dark-panel h3{color:var(--cream);}
+.dark-panel p{color:#C8BDB8;}
+.dark-panel .accent{color:var(--pink);}
+.btn-cta{display:inline-block;background:var(--berry);color:#fff;font-weight:700;font-size:15px;padding:13px 26px;border-radius:var(--radius-sm);border-bottom:none;margin-top:14px;}
+.foot{margin-top:40px;text-align:center;font-size:12px;color:var(--mid);}
+.skill-name{font-family:var(--font-display);font-weight:700;color:var(--berry);}
+code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em;padding:1px 6px;border-radius:5px;border:1px solid #F3D9E2;}
+/* shared top nav */
+.topnav{max-width:760px;margin:0 auto 24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.topnav .nl{font-family:var(--font-body);font-size:12px;font-weight:700;text-decoration:none;border:1px solid var(--warm);background:var(--white);color:var(--mid);padding:8px 14px;border-radius:999px;}
+.topnav .nl.active{background:var(--berry);color:#fff;border-color:var(--berry);}
+.topnav .nl:hover{color:var(--dark);opacity:1;}
+.topnav .nl.active:hover{color:#fff;opacity:.92;}
+.ribbon{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--berry);color:#fff;border-radius:var(--radius-md);padding:14px 18px;margin:22px 0 6px;box-shadow:var(--shadow-lift);}
+.ribbon .ribbon-tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--pink);color:var(--dark);padding:4px 11px;border-radius:999px;flex:none;}
+.ribbon .ribbon-txt{font-size:13.5px;font-weight:600;color:#fff;margin:0;}
+.ribbon b{color:#fff;}
+.conn{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--warm);}
+.conn:last-child{border-bottom:none;}
+.conn .ic{font-size:18px;flex:none;line-height:1.2;}
+.conn .nm{font-weight:700;}
+.conn .meta{font-size:13px;color:var(--mid);margin-top:2px;}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="nl" href="index.html">SEO + GEO Guide</a>
+  <a class="nl" href="dashboard.html">SEO + GEO Dashboard</a>
+  <a class="nl active" href="backlinks-setup-guide.html">Backlinks Guide</a>
+  <a class="nl" href="links.html">Backlinks Dashboard</a>
+</nav>
+
+<div class="wrap">
+
+  <span class="badge">Free Guide · @vibha.in.progress</span>
+  <h1 style="margin-top:16px;">The Backlink Engine</h1>
+  <div class="divider"></div>
+  <p class="lead">Google does not just read your site, it counts who vouches for it. This is the whole system that finds who should be linking to you, drafts the outreach for you, reclaims the easy wins, and tracks every link you gain or lose, live. Every connector, every skill, every prompt to copy. No agency retainer.</p>
+
+  <div class="ribbon">
+    <span class="ribbon-tag">Dropping soon</span>
+    <p class="ribbon-txt">No backlinks at <b>all</b> yet? The from-scratch playbook is <b>dropping soon</b>. This guide is for sites that already have the basics, the next one starts you from zero.</p>
+  </div>
+
+  <!-- WHAT YOU'RE BUILDING -->
+  <div class="section">
+    <div class="step-tag">What you're building</div>
+    <h2>One loop that runs your backlinks</h2>
+    <p>This is part two of the SEO system. Part one (the <a href="index.html">SEO + GEO Autopilot</a>) fixes what is on your page. This fixes what points to it, the half agencies charge the most for.</p>
+    <div class="loop">Map&nbsp; →&nbsp; Land&nbsp; →&nbsp; Reclaim&nbsp; →&nbsp; Track&nbsp; →&nbsp; (repeat)</div>
+    <p style="margin-top:14px;">It runs on one Claude skill called <span class="skill-name">seo-backlinks</span> plus a few free data sources. You already have backlinks sorted at the basics? Good. This is how you find the high quality ones that actually move rankings.</p>
+  </div>
+
+  <!-- COST -->
+  <div class="section">
+    <div class="step-tag">What it costs</div>
+    <h2>Free to start</h2>
+    <div class="cost-grid">
+      <div class="cost"><div class="cost-num">₹0</div><div class="cost-label">seo-backlinks skill + Common Crawl + your Search Console + Bing</div></div>
+      <div class="cost"><div class="cost-num">₹0</div><div class="cost-label">Moz authority scores (free tier, about 10 lookups a month)</div></div>
+      <div class="cost"><div class="cost-num">~₹50</div><div class="cost-label">DataForSEO, optional, pay-as-you-go for depth and speed</div></div>
+    </div>
+    <p>The free route (Common Crawl plus your own Search Console) covers the whole loop. DataForSEO is the only paid piece and there is no subscription, you just top up a little when you want richer competitor data.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="section">
+    <div class="step-tag">Step 1</div>
+    <h2>Set up your project and connect your tools</h2>
+    <ol class="steps-num">
+      <li>Open <a href="https://claude.ai">Claude</a> and add the <b>seo-backlinks</b> skill in <b>Settings → Capabilities</b> (or your plugin marketplace). This is the brain of the whole system.</li>
+      <li>Make a project, name it <b>"Backlink Engine,"</b> and paste the instructions below into <b>Project Settings → Instructions.</b></li>
+      <li>Verify your site in <a href="https://search.google.com/search-console">Google Search Console</a> (free, one time). This is what lets Claude see the links you already have.</li>
+      <li>Add a free <a href="https://www.bing.com/webmasters">Bing Webmaster Tools</a> account too, it reports backlinks Google misses and it is free.</li>
+      <li>Connect the <a href="https://github.com/AminForou/mcp-gsc">Google Search Console MCP</a> (free, open source, one line, no coding). Same one used in the SEO + GEO guide.</li>
+      <li>Get a free <a href="https://moz.com/products/api">Moz Links API</a> key for Domain Authority scores. Free tier is limited, plenty to start.</li>
+      <li><b>Optional, for deeper competitor data:</b> add the <a href="https://github.com/dataforseo/mcp-server-typescript">DataForSEO MCP</a> (official repo, copy the install command from the README) and top up a little at <a href="https://dataforseo.com">dataforseo.com</a> (pay as you go).</li>
+    </ol>
+    <div class="prompt-box">
+      <div class="prompt-label">Paste into Project Instructions</div>
+      <div class="prompt-text">You are my backlink analyst and outreach writer. You use the seo-backlinks skill to find who should be linking to me, score every site by authority, draft my outreach, and track the links I win or lose over time.
+
+Rules:
+- Pull my real existing links from Search Console and Bing Webmaster before guessing.
+- Always tag a link do-follow or no-follow, and lead with the high authority, low effort wins.
+- You find, score, draft and track. You never auto-send outreach, you give me paste-ready drafts and I send them.
+- Free route first (Common Crawl + my Search Console). Only use DataForSEO when I ask for depth.
+- Plain English. Tell me exactly who to send each draft to.</div>
+    </div>
+  </div>
+
+  <!-- WHAT'S A CONNECTOR -->
+  <div class="section">
+    <div class="step-tag">In plain English</div>
+    <h2>Wait, what are these connectors and skills?</h2>
+    <p>None of this needs code. Here is what each piece actually is.</p>
+    <div class="card">
+      <div class="conn"><span class="ic">🧠</span><div><div class="nm">The seo-backlinks <b>skill</b> <span class="tag tag-sage">free</span></div><div class="meta">A skill is a set of instructions that teaches Claude one job really well. This one knows how to map, score, draft and track backlinks. You add it once in Settings.</div></div></div>
+      <div class="conn"><span class="ic">🔌</span><div><div class="nm">A <b>connector</b> (MCP) <span class="tag tag-sage">free unless marked</span></div><div class="meta">A connector is how Claude plugs into an outside tool to read real data, like your Search Console or a backlink database. You connect it once, then Claude can pull live numbers.</div></div></div>
+      <div class="conn"><span class="ic">🌐</span><div><div class="nm">Common Crawl <span class="tag tag-sage">free</span></div><div class="meta">A free, public map of who links to who across the whole internet. No account needed, the skill reads it for you. This is how it sees your competitors' backlinks.</div></div></div>
+      <div class="conn"><span class="ic">📊</span><div><div class="nm">Moz Links API <span class="tag tag-amber">free tier</span></div><div class="meta">Gives every website a Domain Authority score from 0 to 100, how much Google trusts it. The free tier is limited but enough to rank your shortlist.</div></div></div>
+      <div class="conn"><span class="ic">🔍</span><div><div class="nm">Google Search Console + Bing Webmaster <span class="tag tag-sage">free</span></div><div class="meta">Your own backlink records, straight from Google and Bing. This is what powers the live tracker so you see links you gain or lose.</div></div></div>
+      <div class="conn"><span class="ic">⚡</span><div><div class="nm">DataForSEO <span class="tag tag-burg">paid, cheap</span></div><div class="meta">A paid backlink and rank database for when you want more depth and speed than the free route. Pay as you go, no subscription. Totally optional.</div></div></div>
+    </div>
+  </div>
+
+  <!-- STEP 2 · THE 4 MOVES -->
+  <div class="section">
+    <div class="step-tag">Step 2</div>
+    <h2>The four moves, and the prompt for each</h2>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">1 · The Mapper</span></h3>
+      <p>Finds every site linking to your top competitors, scores each by authority, and shows which ones link them but not you. Your hit list.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Use the seo-backlinks skill. Map my backlink gaps for [yoursite.com]. Pull every site linking to my top 3 competitors [competitor1, competitor2, competitor3] from Common Crawl, score each by Domain Authority via Moz, tag do-follow vs no-follow, and check which already link me. Give me a ranked shortlist of the high-authority sites that link my competitors but not me, easiest to win first.</div></div>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">2 · The Acquirer</span> <span class="tag tag-amber">the part nobody shows you</span></h3>
+      <p>Finding sites is the easy half. This is how you actually land the link. Claude picks the path for each target and writes the outreach in your voice.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">For my top 15 backlink targets, pick the best acquisition path for each: a directory or listing, a guest post, digital PR (a roundup or journalist), or an unlinked-mention reclaim. Then draft the outreach for each one in my voice, short and human, paste-ready. Flag which links are do-follow, and tell me exactly who to send each note to.</div></div>
+      <p style="margin-bottom:0;font-size:13px;"><b>Honest note:</b> foundation links (directories, profiles, listings) are table stakes, they get you on the board but will not rocket you to page one alone. The editorial links (guest posts, press, roundups) are what climb. You need both.</p>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">3 · The Reclaimer</span> <span class="tag tag-sage">easy wins</span></h3>
+      <p>The fastest links you will ever get. Sites that already wrote your name and forgot to link you. They already like you.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Find every place online that mentions [my brand] or [yoursite.com] without linking to me, my unlinked mentions. For each, draft a one-line note asking them to add the link, friendly and short. Sort them by the site's Domain Authority so I send the highest value ones first.</div></div>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">4 · The Ledger</span></h3>
+      <p>A live report wired to your own Search Console and Bing, so every link you gain or lose updates itself. No more guessing if a link is working.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Build me a live backlink dashboard artifact. Tabs for the Mapper, the Acquirer, the Reclaimer, and a Ledger wired to my Google Search Console and Bing Webmaster. Show backlinks gained vs lost over time, my Domain Authority trend, the do-follow vs no-follow split, and flag any link that disappears. Each time I open it, refresh the numbers from Search Console and Bing.</div></div>
+      <p style="margin-bottom:0;"><a class="btn-cta" href="links.html" style="margin-top:4px;">See the live backlink dashboard →</a></p>
+    </div>
+  </div>
+
+  <!-- STEP 3 · AUTOPILOT -->
+  <div class="section">
+    <div class="step-tag">Step 3 · make it run itself</div>
+    <h2>Put the tracker on autopilot</h2>
+    <p>An artifact only refreshes when you open it. So schedule one tiny task to check your links every week, even when you are not looking.</p>
+    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Every Monday at 8am, check my backlinks via Search Console and Bing Webmaster, log how many I gained or lost this week, update my Domain Authority, and message me only if I lost a link or won a high-authority one.</div></div>
+    <p>Now the ledger climbs on its own, and you get pinged the moment a link drops, which is exactly the "never guess if a link is working" part.</p>
+  </div>
+
+  <!-- TOOLKIT -->
+  <div class="section">
+    <div class="step-tag">Every link in one place</div>
+    <h2>Your toolkit</h2>
+    <div class="card">
+      <ul style="margin-bottom:0;">
+        <li><a href="https://claude.ai">Claude</a> + the <b>seo-backlinks</b> skill, where the whole thing runs (free)</li>
+        <li><a href="https://commoncrawl.org">Common Crawl</a>, the free public link map</li>
+        <li><a href="https://moz.com/products/api">Moz Links API</a>, Domain Authority scores (free tier)</li>
+        <li><a href="https://search.google.com/search-console">Google Search Console</a> + the <a href="https://github.com/AminForou/mcp-gsc">GSC MCP</a>, your own link data (free)</li>
+        <li><a href="https://www.bing.com/webmasters">Bing Webmaster Tools</a>, more link data Google misses (free)</li>
+        <li><a href="https://github.com/dataforseo/mcp-server-typescript">DataForSEO MCP</a> (install commands in the repo README), deeper competitor data (paid, pay-as-you-go)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- starting from zero -->
+  <div class="section">
+    <div class="step-tag">Starting from absolute zero?</div>
+    <h2>No links at all yet?</h2>
+    <p>This guide assumes you have the basics covered. If nothing links to you yet, that is a different starting line, and the from-scratch playbook is dropping <b>soon</b> for exactly that. For now: claim your foundation links first (Product Hunt, Crunchbase, your real niche directories), then come back and run this loop.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="dark-panel">
+    <h2>Want me to set this up <span class="accent">with</span> you?</h2>
+    <p style="margin-top:8px;">Not everyone wants to wire up connectors and projects themselves, and that is completely fine. If you would rather have it built <em>for</em> your brand, with the prompts tuned to your business and the live tracker running on your real site, book a paid working session with me. We set the whole loop up together.</p>
+    <a class="btn-cta" href="https://www.vibha.is/taking-meetings">Book a session → vibha.is/taking-meetings</a>
+  </div>
+
+  <div class="foot">Made by Vibha · @vibha.in.progress · save this, you'll come back to it</div>
+
+</div>
+</body>
+</html>
