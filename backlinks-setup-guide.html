@@ -119,7 +119,7 @@ code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas
     <div class="step-tag">Step 1</div>
     <h2>Set up your project and connect your tools</h2>
     <ol class="steps-num">
-      <li>Open <a href="https://claude.ai">Claude</a> and add the <b>seo-backlinks</b> skill in <b>Settings → Capabilities</b> (or your plugin marketplace). This is the brain of the whole system.</li>
+      <li>Open <a href="https://claude.ai">Claude</a> and add the <b><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-backlinks/SKILL.md">seo-backlinks</a></b> skill in <b>Settings → Capabilities</b> (or your plugin marketplace). This is the brain of the whole system.<br><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-backlinks/SKILL.md">See exactly what the skill does, and copy it, on GitHub →</a></li>
       <li>Make a project, name it <b>"Backlink Engine,"</b> and paste the instructions below into <b>Project Settings → Instructions.</b></li>
       <li>Verify your site in <a href="https://search.google.com/search-console">Google Search Console</a> (free, one time). This is what lets Claude see the links you already have.</li>
       <li>Add a free <a href="https://www.bing.com/webmasters">Bing Webmaster Tools</a> account too, it reports backlinks Google misses and it is free.</li>
@@ -146,7 +146,7 @@ Rules:
     <h2>Wait, what are these connectors and skills?</h2>
     <p>None of this needs code. Here is what each piece actually is.</p>
     <div class="card">
-      <div class="conn"><span class="ic">🧠</span><div><div class="nm">The seo-backlinks <b>skill</b> <span class="tag tag-sage">free</span></div><div class="meta">A skill is a set of instructions that teaches Claude one job really well. This one knows how to map, score, draft and track backlinks. You add it once in Settings.</div></div></div>
+      <div class="conn"><span class="ic">🧠</span><div><div class="nm">The <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-backlinks/SKILL.md">seo-backlinks</a> <b>skill</b> <span class="tag tag-sage">free</span></div><div class="meta">A skill is a set of instructions that teaches Claude one job really well. This one knows how to map, score, draft and track backlinks. You add it once in Settings.</div></div></div>
       <div class="conn"><span class="ic">🔌</span><div><div class="nm">A <b>connector</b> (MCP) <span class="tag tag-sage">free unless marked</span></div><div class="meta">A connector is how Claude plugs into an outside tool to read real data, like your Search Console or a backlink database. You connect it once, then Claude can pull live numbers.</div></div></div>
       <div class="conn"><span class="ic">🌐</span><div><div class="nm">Common Crawl <span class="tag tag-sage">free</span></div><div class="meta">A free, public map of who links to who across the whole internet. No account needed, the skill reads it for you. This is how it sees your competitors' backlinks.</div></div></div>
       <div class="conn"><span class="ic">📊</span><div><div class="nm">Moz Links API <span class="tag tag-amber">free tier</span></div><div class="meta">Gives every website a Domain Authority score from 0 to 100, how much Google trusts it. The free tier is limited but enough to rank your shortlist.</div></div></div>
@@ -202,7 +202,7 @@ Rules:
     <h2>Your toolkit</h2>
     <div class="card">
       <ul style="margin-bottom:0;">
-        <li><a href="https://claude.ai">Claude</a> + the <b>seo-backlinks</b> skill, where the whole thing runs (free)</li>
+        <li><a href="https://claude.ai">Claude</a> + the <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-backlinks/SKILL.md">seo-backlinks</a> skill, where the whole thing runs (free)</li>
         <li><a href="https://commoncrawl.org">Common Crawl</a>, the free public link map</li>
         <li><a href="https://moz.com/products/api">Moz Links API</a>, Domain Authority scores (free tier)</li>
         <li><a href="https://search.google.com/search-console">Google Search Console</a> + the <a href="https://github.com/AminForou/mcp-gsc">GSC MCP</a>, your own link data (free)</li>
