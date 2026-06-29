@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The SEO + GEO Autopilot — Full Setup Guide</title>
+<title>The SEO + GEO Autopilot, Full Setup Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -54,9 +54,12 @@ ul{margin:0 0 12px 20px;}li{font-size:14.5px;margin-bottom:7px;}
 .foot{margin-top:40px;text-align:center;font-size:12px;color:var(--mid);}
 .skill-name{font-family:var(--font-display);font-weight:700;color:var(--berry);}
 code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em;padding:1px 6px;border-radius:5px;border:1px solid #F3D9E2;}
+.topnav{max-width:760px;margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 4px;}.topnav .nl{font-family:'DM Sans',-apple-system,sans-serif;font-size:12px;font-weight:700;text-decoration:none;border:1px solid #E8DFD3;background:#fff;color:#7A6B62;padding:8px 14px;border-radius:999px;}.topnav .nl.active{background:#A8174A;color:#fff;border-color:#A8174A;}.topnav .nl:hover{color:#2D2320;}.subnav{max-width:760px;margin:0 auto 22px;padding:0 4px;}.navbtn{display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',-apple-system,sans-serif;font-size:12.5px;font-weight:700;text-decoration:none;background:#A8174A;color:#fff;padding:9px 16px;border-radius:8px;border:none;}.navbtn.ghost{background:#fff;color:#A8174A;border:1.5px solid #A8174A;}.navbtn:hover{opacity:.9;}
 </style>
 </head>
 <body>
+<nav class="topnav"><a class="nl active" href="index.html">SEO + GEO Guide</a><a class="nl" href="backlinks-setup-guide.html">Backlinks Guide</a><a class="nl" href="content-engine-setup-guide.html">Content Guide</a></nav>
+<div class="subnav"><a class="navbtn" href="dashboard.html">View SEO + GEO Dashboard →</a></div>
 <div class="wrap">
 <nav data-sitenav style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;font-family:DM Sans,-apple-system,sans-serif;">
 <a href="index.html" style="font-size:12px;font-weight:700;text-decoration:none;border:1px solid #A8174A;background:#A8174A;color:#fff;padding:8px 14px;border-radius:999px;">SEO + GEO Guide</a>
@@ -69,7 +72,7 @@ code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas
   <span class="badge">Free Guide · @vibha.in.progress</span>
   <h1 style="margin-top:16px;">The SEO&nbsp;+&nbsp;GEO Autopilot</h1>
   <div class="divider"></div>
-  <p class="lead">Set up Claude to audit where you rank — on Google <em>and</em> inside ChatGPT — find why you don't, fix it, and track the climb. Forever. This is the whole system, step by step, with every prompt to copy.</p>
+  <p class="lead">Set up Claude to audit where you rank, on Google <em>and</em> inside ChatGPT, find why you don't, fix it, and track the climb. Forever. This is the whole system, step by step, with every prompt to copy.</p>
 
   <!-- WHAT YOU'RE BUILDING -->
   <div class="section">
@@ -77,7 +80,7 @@ code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas
     <h2>One loop that runs your whole SEO</h2>
     <p>A real SEO consultant does five things. So will Claude.</p>
     <div class="loop">Audit&nbsp; →&nbsp; Diagnose&nbsp; →&nbsp; Strategize&nbsp; →&nbsp; Fix&nbsp; →&nbsp; Re-audit&nbsp; →&nbsp; (repeat)</div>
-    <p style="margin-top:14px;">SEO and AI-search aren't separate jobs anymore — they're one. This setup does both at once, and tracks the trend in a live report so you watch it improve week over week.</p>
+    <p style="margin-top:14px;">SEO and AI-search aren't separate jobs anymore, they're one. This setup does both at once, and tracks the trend in a live report so you watch it improve week over week.</p>
   </div>
 
   <!-- COST -->
@@ -89,7 +92,7 @@ code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas
       <div class="cost"><div class="cost-num">₹0</div><div class="cost-label">AI-search visibility checkers</div></div>
       <div class="cost"><div class="cost-num">~₹50</div><div class="cost-label">1,000 live rank checks (optional, pay-as-you-go)</div></div>
     </div>
-    <p>Everything except competitor rank-tracking is free. The one paid piece — DataForSEO — has no subscription; 1,000 live SERP checks cost about 60 paise.</p>
+    <p>Everything except competitor rank-tracking is free. The one paid piece, DataForSEO, has no subscription; 1,000 live SERP checks cost about 60 paise.</p>
   </div>
 
   <!-- STEP 1 -->
@@ -99,8 +102,8 @@ code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas
     <ol class="steps-num">
       <li>Open <a href="https://claude.ai">claude.ai</a> → <b>Projects → New Project</b> → name it <b>"SEO + GEO Autopilot."</b></li>
       <li>Paste the instructions below into <b>Project Settings → Instructions.</b></li>
-      <li>Verify your site in <a href="https://search.google.com/search-console">Google Search Console</a> (free, one-time) — this is what lets Claude see your real rankings.</li>
-      <li>Connect the <a href="https://github.com/AminForou/mcp-gsc">Google Search Console MCP</a> (free, open-source). It's a one-line install — no coding.</li>
+      <li>Verify your site in <a href="https://search.google.com/search-console">Google Search Console</a> (free, one-time), this is what lets Claude see your real rankings.</li>
+      <li>Connect the <a href="https://github.com/AminForou/mcp-gsc">Google Search Console MCP</a> (free, open-source). It's a one-line install, no coding.</li>
       <li><b>Optional, for competitor + keyword data:</b> add the <a href="https://dataforseo.com">DataForSEO MCP</a> and top up $50 (lasts a very long time).</li>
     </ol>
     <div class="prompt-box">
@@ -116,43 +119,43 @@ Rules:
     </div>
   </div>
 
-  <!-- STEP 2 — THE 4 SKILLS -->
+  <!-- STEP 2, THE 4 SKILLS -->
   <div class="section">
     <div class="step-tag">Step 2</div>
-    <h2>The four skills — and the prompt for each</h2>
+    <h2>The four skills, and the prompt for each</h2>
 
     <div class="card card-accent-berry">
       <h3><span class="skill-name">1 · The Auditor</span></h3>
       <p>Crawls your whole site, runs 180+ technical checks, and pulls your real Google rankings. Your baseline.</p>
-      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Audit [yoursite.com] end to end. Run the technical crawl, pull my live rankings, impressions and CTR from Search Console, check my Core Web Vitals, and score my AI-search readiness out of 100. Give me one baseline scorecard — Google health on one side, AI-search health on the other — and flag the 5 biggest problems ranked by impact.</div></div>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Audit [yoursite.com] end to end. Run the technical crawl, pull my live rankings, impressions and CTR from Search Console, check my Core Web Vitals, and score my AI-search readiness out of 100. Give me one baseline scorecard, Google health on one side, AI-search health on the other, and flag the 5 biggest problems ranked by impact.</div></div>
     </div>
 
     <div class="card card-accent-berry">
       <h3><span class="skill-name">2 · The AI-Search Spy</span></h3>
-      <p>Checks whether AI engines recommend you — and scores exactly why you're being skipped.</p>
-      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Check if [yoursite.com] shows up when people ask AI about [my category + my 5 top buying questions]. Test ChatGPT, Perplexity, Gemini, Google AI Overviews and Bing Copilot. For each: am I cited — yes or no — and if not, the single reason why. Then score my overall AI-search visibility out of 100.</div></div>
-      <p style="margin-bottom:0;font-size:13px;"><b>Free shortcut:</b> run your domain through <a href="https://ahrefs.com/ai-visibility-checker">Ahrefs</a>, <a href="https://www.useomnia.com/ai-visibility-checker">Omnia</a>, or <a href="https://www.semrush.com/free-tools/ai-search-visibility-checker/">Semrush</a> — all free, no signup.</p>
+      <p>Checks whether AI engines recommend you, and scores exactly why you're being skipped.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Check if [yoursite.com] shows up when people ask AI about [my category + my 5 top buying questions]. Test ChatGPT, Perplexity, Gemini, Google AI Overviews and Bing Copilot. For each: am I cited, yes or no, and if not, the single reason why. Then score my overall AI-search visibility out of 100.</div></div>
+      <p style="margin-bottom:0;font-size:13px;"><b>Free shortcut:</b> run your domain through <a href="https://ahrefs.com/ai-visibility-checker">Ahrefs</a>, <a href="https://www.useomnia.com/ai-visibility-checker">Omnia</a>, or <a href="https://www.semrush.com/free-tools/ai-search-visibility-checker/">Semrush</a>, all free, no signup.</p>
     </div>
 
     <div class="card card-accent-berry">
       <h3><span class="skill-name">3 · The Diagnoser</span> <span class="tag tag-amber">keyword + question engine</span></h3>
-      <p>This is where the real wins live. Two gaps in one: the long-tail keywords you <em>almost</em> rank for, and the exact questions people ask AI — scored by intent so you know precisely what to write.</p>
-      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">From my Search Console data, find every long-tail keyword where I rank between position 8 and 20 — my "striking distance" quick wins. Then pull the top questions people ask AI in my niche, classify each by intent (informational / commercial / transactional), and mark whether I already answer it, answer it thinly, or have no answer at all. Sort by volume, and for each gap tell me exactly what to write and where — a blog, an FAQ, or a comparison page.</div></div>
-      <p style="margin-bottom:0;font-size:13px;">Long-tail is ~70% of all searches and exactly how people talk to AI. Fill the "no answer" questions first — that's where AI has nobody to cite yet.</p>
+      <p>This is where the real wins live. Two gaps in one: the long-tail keywords you <em>almost</em> rank for, and the exact questions people ask AI, scored by intent so you know precisely what to write.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">From my Search Console data, find every long-tail keyword where I rank between position 8 and 20, my "striking distance" quick wins. Then pull the top questions people ask AI in my niche, classify each by intent (informational / commercial / transactional), and mark whether I already answer it, answer it thinly, or have no answer at all. Sort by volume, and for each gap tell me exactly what to write and where, a blog, an FAQ, or a comparison page.</div></div>
+      <p style="margin-bottom:0;font-size:13px;">Long-tail is ~70% of all searches and exactly how people talk to AI. Fill the "no answer" questions first, that's where AI has nobody to cite yet.</p>
     </div>
 
     <div class="card card-accent-berry">
       <h3><span class="skill-name">4 · The Fixer</span></h3>
-      <p>Writes every fix, ready to paste — schema, llms.txt, robots.txt, rewritten pages, citable answer blocks.</p>
+      <p>Writes every fix, ready to paste, schema, llms.txt, robots.txt, rewritten pages, citable answer blocks.</p>
       <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Take the top 3 fixes from the audit. Write me everything ready to paste: the FAQ schema as JSON-LD, my llms.txt file, the robots.txt rules to allow AI crawlers, and rewritten titles + meta + a 150-word citable answer block for each target page. Give me copy-paste-ready output and tell me exactly where each piece goes.</div></div>
     </div>
   </div>
 
-  <!-- IMPLEMENTATION — plain English -->
+  <!-- IMPLEMENTATION, plain English -->
   <div class="section">
     <div class="step-tag">Before you deploy · in plain English</div>
-    <h2>Wait — what are these files, and where do they go?</h2>
-    <p>Claude hands you three things. Here's what each one actually is and where it lives. None of this touches your design or your content — they're small, safe, standard files.</p>
+    <h2>Wait, what are these files, and where do they go?</h2>
+    <p>Claude hands you three things. Here's what each one actually is and where it lives. None of this touches your design or your content, they're small, safe, standard files.</p>
 
     <div class="card card-accent-berry">
       <h3>robots.txt <span class="tag tag-sage">Easy</span></h3>
@@ -161,68 +164,68 @@ Rules:
 
     <div class="card card-accent-berry">
       <h3>llms.txt <span class="tag tag-sage">Easy</span></h3>
-      <p style="margin-bottom:0;">The new "menu" you hand to AI. A plain text file at <code>yoursite.com/llms.txt</code> that tells ChatGPT, Perplexity and friends what your site is about and which pages matter most — so they describe and cite you correctly. It's a brand-new standard that <b>almost no one has yet</b> — which is exactly why it's an easy edge.</p>
+      <p style="margin-bottom:0;">The new "menu" you hand to AI. A plain text file at <code>yoursite.com/llms.txt</code> that tells ChatGPT, Perplexity and friends what your site is about and which pages matter most, so they describe and cite you correctly. It's a brand-new standard that <b>almost no one has yet</b>, which is exactly why it's an easy edge.</p>
     </div>
 
     <div class="card card-accent-berry">
-      <h3>Schema (JSON-LD) <span class="tag tag-amber">Easy–Medium</span></h3>
-      <p style="margin-bottom:0;">A small snippet of code that labels your content so Google and AI understand it ("this is an FAQ", "this is the answer to X"). <b>It goes inside the <code>&lt;head&gt;</code> of the one page it describes</b> — not site-wide. This is what earns rich results and AI citations.</p>
+      <h3>Schema (JSON-LD) <span class="tag tag-amber">Easy, Medium</span></h3>
+      <p style="margin-bottom:0;">A small snippet of code that labels your content so Google and AI understand it ("this is an FAQ", "this is the answer to X"). <b>It goes inside the <code>&lt;head&gt;</code> of the one page it describes</b>, not site-wide. This is what earns rich results and AI citations.</p>
     </div>
 
-    <h3 style="margin-top:24px;">How to actually deploy it — find your setup</h3>
+    <h3 style="margin-top:24px;">How to actually deploy it, find your setup</h3>
     <div class="card">
       <ul style="margin-bottom:0;">
-        <li><b>WordPress</b> <span class="tag tag-sage">Easy, ~10 min</span> — Use the Yoast or Rank Math SEO plugin: it has a robots.txt editor built in. Drop llms.txt in via a file manager plugin. Paste schema into the page's "custom header" box (or the plugin's schema field). No code.</li>
-        <li><b>Shopify</b> <span class="tag tag-amber">Medium</span> — robots is editable via <code>robots.txt.liquid</code> in your theme; add schema in <code>theme.liquid</code> or a free schema app. llms.txt needs a quick file upload — hand this one to whoever set up your theme.</li>
-        <li><b>Webflow / Framer</b> <span class="tag tag-sage">Easy</span> — robots.txt is in Site Settings → SEO. Schema goes in Page Settings → "Custom code / inside &lt;head&gt;." Paste and publish.</li>
-        <li><b>Wix / Squarespace</b> <span class="tag tag-amber">Medium</span> — Use the "custom code / code injection" area in settings for schema; robots is partly managed for you. A couple of clicks, some limits.</li>
-        <li><b>Custom or coded site (React, Next, static)</b> <span class="tag tag-sage">Easy for a dev</span> — drop <code>robots.txt</code> and <code>llms.txt</code> in your <code>/public</code> (root) folder; put schema in the page's <code>&lt;head&gt;</code>. This is the one to hand to your developer.</li>
+        <li><b>WordPress</b> <span class="tag tag-sage">Easy, ~10 min</span>, Use the Yoast or Rank Math SEO plugin: it has a robots.txt editor built in. Drop llms.txt in via a file manager plugin. Paste schema into the page's "custom header" box (or the plugin's schema field). No code.</li>
+        <li><b>Shopify</b> <span class="tag tag-amber">Medium</span>, robots is editable via <code>robots.txt.liquid</code> in your theme; add schema in <code>theme.liquid</code> or a free schema app. llms.txt needs a quick file upload, hand this one to whoever set up your theme.</li>
+        <li><b>Webflow / Framer</b> <span class="tag tag-sage">Easy</span>, robots.txt is in Site Settings → SEO. Schema goes in Page Settings → "Custom code / inside &lt;head&gt;." Paste and publish.</li>
+        <li><b>Wix / Squarespace</b> <span class="tag tag-amber">Medium</span>, Use the "custom code / code injection" area in settings for schema; robots is partly managed for you. A couple of clicks, some limits.</li>
+        <li><b>Custom or coded site (React, Next, static)</b> <span class="tag tag-sage">Easy for a dev</span>, drop <code>robots.txt</code> and <code>llms.txt</code> in your <code>/public</code> (root) folder; put schema in the page's <code>&lt;head&gt;</code>. This is the one to hand to your developer.</li>
       </ul>
     </div>
 
     <h3 style="margin-top:24px;">Handing it to your marketing or SEO team? Send them this 👇</h3>
     <div class="prompt-box">
       <div class="prompt-label">Copy-paste brief for your team</div>
-      <div class="prompt-text">Please add three things to our site — all standard, safe, and under 30 minutes total, no design or content changes:
+      <div class="prompt-text">Please add three things to our site, all standard, safe, and under 30 minutes total, no design or content changes:
 
-1. Merge the attached robots.txt rules at our root (yoursite.com/robots.txt) — they allow AI search crawlers (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot).
+1. Merge the attached robots.txt rules at our root (yoursite.com/robots.txt), they allow AI search crawlers (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot).
 2. Add an llms.txt file at our domain root (yoursite.com/llms.txt) with the content I've pasted.
 3. Add the FAQ schema (JSON-LD) into the &lt;head&gt; of [paste the page URL].
 
 These are SEO + AI-search visibility files generated for us. Ping me if anything's unclear.</div>
     </div>
 
-    <p><b>How hard is this really?</b> robots.txt and llms.txt are just uploading two small text files — about as hard as attaching a file to an email. Schema is pasting one snippet into a page's header. If you can edit a page in your website builder, you can do this in an afternoon. If not, the brief above gets it done by anyone technical in half an hour.</p>
+    <p><b>How hard is this really?</b> robots.txt and llms.txt are just uploading two small text files, about as hard as attaching a file to an email. Schema is pasting one snippet into a page's header. If you can edit a page in your website builder, you can do this in an afternoon. If not, the brief above gets it done by anyone technical in half an hour.</p>
   </div>
 
-  <!-- STEP 3 — RE-AUDIT -->
+  <!-- STEP 3, RE-AUDIT -->
   <div class="section">
     <div class="step-tag">Step 3</div>
-    <h2>Close the loop — re-audit</h2>
+    <h2>Close the loop, re-audit</h2>
     <p>Two weeks after you ship the fixes, prove they worked.</p>
-    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Re-run the full audit on [yoursite.com] and compare it to my last baseline. What moved — positions, GEO score, AI citations? What's still open? Give me this week's top 3 priorities.</div></div>
+    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Re-run the full audit on [yoursite.com] and compare it to my last baseline. What moved, positions, GEO score, AI citations? What's still open? Give me this week's top 3 priorities.</div></div>
   </div>
 
-  <!-- STEP 4 — LIVE ARTIFACT -->
+  <!-- STEP 4, LIVE ARTIFACT -->
   <div class="section">
     <div class="step-tag">Step 4 · the part everyone asks about</div>
     <h2>Set up your live report</h2>
-    <p>SEO only improves over time — so you need to see the trend, not a one-off snapshot. Claude can build you a live dashboard that pulls fresh numbers every time you open it and draws your rankings climbing week over week.</p>
+    <p>SEO only improves over time, so you need to see the trend, not a one-off snapshot. Claude can build you a live dashboard that pulls fresh numbers every time you open it and draws your rankings climbing week over week.</p>
     <p style="margin-bottom:0;"><a class="btn-cta" href="dashboard.html" style="margin-top:4px;">See a live dashboard example →</a></p>
     <p style="margin-top:18px;">Two pieces make it work together:</p>
     <h3 style="margin-top:10px;">A · Build the dashboard</h3>
-    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Create a live artifact dashboard for my SEO + GEO report. Give it a tab for each skill — Auditor, AI-Search Spy, Diagnoser, Fixer, Live Report — where each shows the result, which tools are live, and my next step. Each time I open it, pull my current rankings from the Search Console MCP and my GEO score, and draw a line chart of both over time. Show my striking-distance keywords and my AI-question gaps by intent as tables, and put my ready-to-paste fixes (schema, llms.txt, robots.txt) behind copy buttons. Remember each day's numbers so the trend builds up.</div></div>
+    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Create a live artifact dashboard for my SEO + GEO report. Give it a tab for each skill, Auditor, AI-Search Spy, Diagnoser, Fixer, Live Report, where each shows the result, which tools are live, and my next step. Each time I open it, pull my current rankings from the Search Console MCP and my GEO score, and draw a line chart of both over time. Show my striking-distance keywords and my AI-question gaps by intent as tables, and put my ready-to-paste fixes (schema, llms.txt, robots.txt) behind copy buttons. Remember each day's numbers so the trend builds up.</div></div>
     <h3>B · Add a daily logger so the graph fills in by itself</h3>
-    <p>An artifact only refreshes when you open it — so schedule a tiny daily task to log one datapoint every morning, even on days you don't look.</p>
-    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Every morning at 8am, run my SEO + GEO audit on [yoursite.com], save today's key numbers — average position, GEO score, keywords in top 10, AI citations — to my tracking file, and message me only if something moved more than 3 positions.</div></div>
-    <p>Now your dashboard climbs on its own, and you've got the proof-it-worked screen — perfect for showing a client or your boss.</p>
+    <p>An artifact only refreshes when you open it, so schedule a tiny daily task to log one datapoint every morning, even on days you don't look.</p>
+    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Every morning at 8am, run my SEO + GEO audit on [yoursite.com], save today's key numbers, average position, GEO score, keywords in top 10, AI citations, to my tracking file, and message me only if something moved more than 3 positions.</div></div>
+    <p>Now your dashboard climbs on its own, and you've got the proof-it-worked screen, perfect for showing a client or your boss.</p>
   </div>
 
   <!-- GTM -->
   <div class="section">
     <div class="step-tag">Bonus</div>
     <h2>Plug it into your GTM command center</h2>
-    <p>If you already run content through a GTM stack in Claude, point this loop at everything it publishes — so every blog and page gets checked for whether it actually ranks and gets cited, and the gaps feed straight back into next week's content.</p>
+    <p>If you already run content through a GTM stack in Claude, point this loop at everything it publishes, so every blog and page gets checked for whether it actually ranks and gets cited, and the gaps feed straight back into next week's content.</p>
     <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Audit the last 5 pages my GTM stack published. For each, are they ranking and getting cited in AI search? List the keyword gaps and turn them into next week's content briefs.</div></div>
   </div>
 
@@ -232,11 +235,11 @@ These are SEO + AI-search visibility files generated for us. Ping me if anything
     <h2>Your toolkit</h2>
     <div class="card">
       <ul style="margin-bottom:0;">
-        <li><a href="https://claude.ai">Claude</a> — where the whole thing runs</li>
-        <li><a href="https://search.google.com/search-console">Google Search Console</a> — verify your site (free)</li>
-        <li><a href="https://github.com/AminForou/mcp-gsc">GSC MCP (mcp-gsc)</a> — connects your live Google data (free)</li>
-        <li><a href="https://dataforseo.com">DataForSEO MCP</a> — competitor + keyword data (~₹50 / 1,000 checks)</li>
-        <li><a href="https://pagespeed.web.dev">PageSpeed Insights</a> — Core Web Vitals (free)</li>
+        <li><a href="https://claude.ai">Claude</a>, where the whole thing runs</li>
+        <li><a href="https://search.google.com/search-console">Google Search Console</a>, verify your site (free)</li>
+        <li><a href="https://github.com/AminForou/mcp-gsc">GSC MCP (mcp-gsc)</a>, connects your live Google data (free)</li>
+        <li><a href="https://dataforseo.com">DataForSEO MCP</a>, competitor + keyword data (~₹50 / 1,000 checks)</li>
+        <li><a href="https://pagespeed.web.dev">PageSpeed Insights</a>, Core Web Vitals (free)</li>
         <li>AI-search checkers (free): <a href="https://ahrefs.com/ai-visibility-checker">Ahrefs</a> · <a href="https://www.useomnia.com/ai-visibility-checker">Omnia</a> · <a href="https://www.semrush.com/free-tools/ai-search-visibility-checker/">Semrush</a></li>
       </ul>
     </div>
@@ -245,7 +248,7 @@ These are SEO + AI-search visibility files generated for us. Ping me if anything
   <!-- CTA -->
   <div class="dark-panel">
     <h2>Want me to set this up <span class="accent">with</span> you?</h2>
-    <p style="margin-top:8px;">Not everyone wants to wire up MCPs and projects themselves — and that's completely fine. If you'd rather have it built <em>for</em> your brand, with the prompts tuned to your business and the live report running, book a paid working session with me. We'll set the whole loop up together, on your real site.</p>
+    <p style="margin-top:8px;">Not everyone wants to wire up MCPs and projects themselves, and that's completely fine. If you'd rather have it built <em>for</em> your brand, with the prompts tuned to your business and the live report running, book a paid working session with me. We'll set the whole loop up together, on your real site.</p>
     <a class="btn-cta" href="https://www.vibha.is/taking-meetings">Book a session → vibha.is/taking-meetings</a>
   </div>
 

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The SEO Content Engine · Full Setup Guide</title>
+<meta name="description" content="Set up an SEO content engine in Claude that drafts pages that rank, refreshes decaying posts from Search Console, and gets you cited by AI. Every skill, MCP, connector and prompt to copy. Free to start.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F0E8;--warm:#E8DFD3;--white:#FFFFFF;--dark:#2D2320;--mid:#7A6B62;
+  --berry:#A8174A;--pink:#F2B8C6;--gingham:#E8A0A0;--sage:#6B8856;--dark-sage:#3D5230;--burgundy:#7A1B1B;
+  --font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',-apple-system,sans-serif;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:14px;--radius-full:999px;
+  --shadow-card:0 2px 12px rgba(45,35,32,.06);--shadow-lift:0 4px 20px rgba(45,35,32,.10);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-body);background:var(--cream);color:var(--dark);line-height:1.65;padding:30px 24px 64px;}
+.wrap{max-width:760px;margin:0 auto;}
+h1{font-family:var(--font-display);font-size:38px;font-weight:800;line-height:1.12;}
+h2{font-family:var(--font-display);font-size:24px;font-weight:700;line-height:1.2;}
+h3{font-family:var(--font-display);font-size:17px;font-weight:600;}
+p{font-size:14.5px;color:var(--dark);margin-bottom:12px;}
+.lead{font-size:16px;color:var(--mid);}
+.divider{width:48px;height:3px;background:var(--berry);border-radius:2px;margin:14px 0 18px;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1.5px solid var(--berry);color:var(--berry);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:var(--radius-full);}
+.badge::before{content:'';width:6px;height:6px;background:var(--berry);border-radius:50%;}
+.section{margin-top:38px;}
+.step-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin-bottom:6px;}
+.card{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-card);margin:16px 0;}
+.card-accent-berry{border-left:4px solid var(--berry);}
+.card-accent-sage{border-left:4px solid var(--sage);}
+.prompt-box{background:#FBF7F2;border:1px solid var(--warm);border-left:4px solid var(--berry);border-radius:var(--radius-md);padding:16px 20px;margin:12px 0 18px;}
+.prompt-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin-bottom:8px;}
+.prompt-text{font-size:13px;color:var(--dark);line-height:1.7;font-family:'DM Sans',monospace;white-space:pre-wrap;}
+.cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0;}
+.cost{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:16px;text-align:center;}
+.cost-num{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--berry);}
+.cost-label{font-size:11.5px;color:var(--mid);margin-top:4px;}
+.tag{display:inline-block;padding:3px 9px;border-radius:5px;font-size:11px;font-weight:600;}
+.tag-sage{background:#F1F4EF;color:var(--sage);border:1px solid #C8D9BE;}
+.tag-amber{background:#FEF8E8;color:#8B6800;border:1px solid #E8D8A0;}
+.tag-burg{background:#FDF0F0;color:var(--burgundy);border:1px solid #E8C0C0;}
+a{color:var(--berry);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gingham);}
+a:hover{opacity:.8;}
+ul{margin:0 0 12px 20px;}li{font-size:14.5px;margin-bottom:7px;}
+.steps-num{counter-reset:s;list-style:none;margin-left:0;}
+.steps-num li{counter-increment:s;position:relative;padding-left:38px;margin-bottom:14px;}
+.steps-num li::before{content:counter(s);position:absolute;left:0;top:0;background:var(--berry);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.loop{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:16px 20px;font-family:var(--font-display);font-size:15px;color:var(--dark);text-align:center;font-weight:600;}
+.dark-panel{background:var(--dark);border-radius:var(--radius-lg);padding:30px;margin-top:20px;}
+.dark-panel h2,.dark-panel h3{color:var(--cream);}
+.dark-panel p{color:#C8BDB8;}
+.dark-panel .accent{color:var(--pink);}
+.btn-cta{display:inline-block;background:var(--berry);color:#fff;font-weight:700;font-size:15px;padding:13px 26px;border-radius:var(--radius-sm);border-bottom:none;margin-top:14px;}
+.foot{margin-top:40px;text-align:center;font-size:12px;color:var(--mid);}
+.skill-name{font-family:var(--font-display);font-weight:700;color:var(--berry);}
+code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em;padding:1px 6px;border-radius:5px;border:1px solid #F3D9E2;}
+.topnav{max-width:760px;margin:0 auto 24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.topnav .nl{font-family:var(--font-body);font-size:12px;font-weight:700;text-decoration:none;border:1px solid var(--warm);background:var(--white);color:var(--mid);padding:8px 14px;border-radius:999px;}
+.topnav .nl.active{background:var(--berry);color:#fff;border-color:var(--berry);}
+.topnav .nl:hover{color:var(--dark);opacity:1;}
+.topnav .nl.active:hover{color:#fff;opacity:.92;}
+.ribbon{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--berry);color:#fff;border-radius:var(--radius-md);padding:14px 18px;margin:22px 0 6px;box-shadow:var(--shadow-lift);}
+.ribbon .ribbon-tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--pink);color:var(--dark);padding:4px 11px;border-radius:999px;flex:none;}
+.ribbon .ribbon-txt{font-size:13.5px;font-weight:600;color:#fff;margin:0;}
+.ribbon b{color:#fff;}
+.conn{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--warm);}
+.conn:last-child{border-bottom:none;}
+.conn .ic{font-size:18px;flex:none;line-height:1.2;}
+.conn .nm{font-weight:700;}
+.conn .meta{font-size:13px;color:var(--mid);margin-top:2px;}
+.writer{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0;}
+.writer .w{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:14px;}
+.writer .w b{font-family:var(--font-display);color:var(--berry);font-size:15px;}
+.writer .w span{font-size:12px;color:var(--mid);display:block;margin-top:4px;}
+@media(max-width:620px){.cost-grid{grid-template-columns:1fr;}.writer{grid-template-columns:1fr;}}
+.subnav{max-width:760px;margin:0 auto 22px;padding:0 4px;}.navbtn{display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',-apple-system,sans-serif;font-size:12.5px;font-weight:700;text-decoration:none;background:#A8174A;color:#fff;padding:9px 16px;border-radius:8px;border:none;}.navbtn.ghost{background:#fff;color:#A8174A;border:1.5px solid #A8174A;}.navbtn:hover{opacity:.9;}
+</style>
+</head>
+<body>
+
+<nav class="topnav"><a class="nl" href="index.html">SEO + GEO Guide</a><a class="nl" href="backlinks-setup-guide.html">Backlinks Guide</a><a class="nl active" href="content-engine-setup-guide.html">Content Guide</a></nav>
+<div class="subnav"><a class="navbtn" href="seo-content-engine.html">View Content Dashboard →</a></div>
+
+<div class="wrap">
+
+  <span class="badge">Free Guide · @vibha.in.progress</span>
+  <h1 style="margin-top:16px;">The SEO Content Engine</h1>
+  <div class="divider"></div>
+  <p class="lead">Google and AI are not ranking your website, they are ranking your content. This is the whole system that reads your site, drafts pages that rank, revives the posts quietly slipping, and rewrites them so AI engines quote you. Every connector, every skill, every prompt to copy. No content agency retainer.</p>
+
+  <div class="ribbon">
+    <span class="ribbon-tag">Part 3 of 3</span>
+    <p class="ribbon-txt">This is the content half of the SEO system. A deeper <b>AEO (Answer Engine Optimization)</b> walkthrough is <b>dropping soon</b>, it goes further on getting cited inside ChatGPT, Claude and Perplexity.</p>
+  </div>
+
+  <!-- WHAT YOU'RE BUILDING -->
+  <div class="section">
+    <div class="step-tag">What you're building</div>
+    <h2>One loop that runs your content</h2>
+    <p>This is part three of the SEO system. Part one (the <a href="index.html">SEO + GEO Autopilot</a>) fixes what is on your page. Part two (the <a href="backlinks-setup-guide.html">Backlink Engine</a>) fixes what points to it. This one keeps your actual content fresh, credible and AI-readable, the thing search and AI actually rank.</p>
+    <div class="loop">Parse&nbsp; →&nbsp; Draft&nbsp; →&nbsp; Refresh&nbsp; →&nbsp; Make Quotable&nbsp; →&nbsp; Track&nbsp; →&nbsp; (repeat)</div>
+    <p style="margin-top:14px;">It runs on three Claude skills, <span class="skill-name">seo-content</span>, <span class="skill-name">seo-geo</span> and <span class="skill-name">seo-technical</span>, all reading from one source of truth: your Google Search Console. Three writers, one project.</p>
+    <div class="writer">
+      <div class="w"><b>The Columnist</b><span>Drafts new pages that clear Google's E-E-A-T bar.</span></div>
+      <div class="w"><b>The Refresher</b><span>Revives posts that are slipping, on a schedule.</span></div>
+      <div class="w"><b>The Quotable</b><span>Rewrites so AI engines quote you.</span></div>
+    </div>
+  </div>
+
+  <!-- COST -->
+  <div class="section">
+    <div class="step-tag">What it costs</div>
+    <h2>Free to start</h2>
+    <div class="cost-grid">
+      <div class="cost"><div class="cost-num">₹0</div><div class="cost-label">seo-content + seo-geo + seo-technical skills + your Search Console</div></div>
+      <div class="cost"><div class="cost-num">₹0</div><div class="cost-label">Search Console MCP + Scheduled Tasks + Artifacts (all native)</div></div>
+      <div class="cost"><div class="cost-num">~₹50</div><div class="cost-label">DataForSEO, optional, pay-as-you-go for real keyword volume + intent</div></div>
+    </div>
+    <p>The free route (your own Search Console plus the three skills) runs the whole loop. DataForSEO is the only paid piece, and it is pay-as-you-go, you top up a little when you want real search-volume and intent numbers instead of Claude inferring them.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="section">
+    <div class="step-tag">Step 1</div>
+    <h2>Set up your project and connect your tools</h2>
+    <ol class="steps-num">
+      <li>Open <a href="https://claude.ai">Claude</a> and add the <b><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-content/SKILL.md">seo-content</a></b>, <b><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-geo/SKILL.md">seo-geo</a></b> and <b><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-technical/SKILL.md">seo-technical</a></b> skills in <b>Settings → Capabilities</b> (or your plugin marketplace). These are the three writers.</li>
+      <li>Make a project, name it <b>"SEO Content Engine,"</b> and paste the instructions below into <b>Project Settings → Instructions.</b> Add a few lines of your brand voice to project knowledge.</li>
+      <li>Verify your site in <a href="https://search.google.com/search-console">Google Search Console</a> (free, one time). This is what lets Claude see your real queries and which pages are slipping.</li>
+      <li>Connect the <a href="https://github.com/AminForou/mcp-gsc">Google Search Console MCP</a> (free, open source, one line, no coding) in <b>Settings → Connectors</b>. Same one used across the SEO set.</li>
+      <li><b>Optional, for real keyword volume + intent:</b> add the <a href="https://github.com/dataforseo/mcp-server-typescript">DataForSEO MCP</a> (official repo, copy the install command from the README) and top up a little at <a href="https://dataforseo.com">dataforseo.com</a> (pay as you go).</li>
+      <li>Make sure <b>Scheduled Tasks</b> and <b>Artifacts</b> are on (both native, free). The schedule keeps the Refresher running; the artifact is your live board.</li>
+    </ol>
+    <div class="prompt-box">
+      <div class="prompt-label">Paste into Project Instructions</div>
+      <div class="prompt-text">You are my SEO Content Engine for [yoursite.com], which is [one line on what the business does]. You run three writers off one source of truth: Google Search Console. Keep my brand voice in everything.
+
+Data spine: always pull real Search Console data (via the GSC MCP) before you advise or draft. Use DataForSEO for keyword volume, difficulty and intent when it is connected. Never invent metrics; if a connector is missing, say so and ask me for a CSV.
+
+The three writers:
+1. THE COLUMNIST (seo-content) drafts new pages. First crawl the site (seo-technical) and pull my real queries (GSC), cluster keyword opportunities by intent, and only draft against queries with real demand. Every draft clears E-E-A-T. Output: title, meta, outline, full draft, target keyword, internal links, schema.
+2. THE REFRESHER (seo-content) finds pages losing position vs the prior 28 days and what is dragging them (dead FAQs, dated keywords, thin intros, missing schema), and rewrites them on a schedule. Output: rewritten copy, changelog, new title/meta, FAQ schema.
+3. THE QUOTABLE (seo-geo) rewrites passages so AI engines quote them: answer first, self-contained, one concrete claim, 40 to 60 words, question-led, plus FAQPage schema.
+
+Rules: real data only; E-E-A-T and citeability on every output; when I say refresh or draft, give me ready-to-publish copy plus a changelog, not tips.</div>
+    </div>
+  </div>
+
+  <!-- WHAT'S A CONNECTOR -->
+  <div class="section">
+    <div class="step-tag">In plain English</div>
+    <h2>Wait, what are these skills and connectors?</h2>
+    <p>None of this needs code. Here is what each piece actually is.</p>
+    <div class="card">
+      <div class="conn"><span class="ic">🖊️</span><div><div class="nm">The <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-content/SKILL.md">seo-content</a> <b>skill</b> <span class="tag tag-sage">free</span></div><div class="meta">Teaches Claude to write and score content against Google's quality bar (E-E-A-T). It powers the Columnist and the Refresher.</div></div></div>
+      <div class="conn"><span class="ic">🤖</span><div><div class="nm">The <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-geo/SKILL.md">seo-geo</a> <b>skill</b> <span class="tag tag-sage">free</span></div><div class="meta">Teaches Claude to write citeable passages so AI engines (ChatGPT, Claude, Perplexity) lift you into their answers. It powers the Quotable.</div></div></div>
+      <div class="conn"><span class="ic">🧭</span><div><div class="nm">The <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-technical/SKILL.md">seo-technical</a> <b>skill</b> <span class="tag tag-sage">free</span></div><div class="meta">Crawls your site so the Columnist understands your pages and keywords before drafting.</div></div></div>
+      <div class="conn"><span class="ic">🔍</span><div><div class="nm"><a href="https://search.google.com/search-console">Google Search Console</a> + the <a href="https://github.com/AminForou/mcp-gsc">GSC MCP</a> <span class="tag tag-sage">free</span></div><div class="meta">Your real query, click and position data. A connector (MCP) is how Claude plugs into it to read live numbers. This is the spine the whole engine runs on.</div></div></div>
+      <div class="conn"><span class="ic">⚡</span><div><div class="nm"><a href="https://github.com/dataforseo/mcp-server-typescript">DataForSEO</a> <span class="tag tag-burg">paid, cheap</span></div><div class="meta">Real keyword search volume, difficulty and intent. Pay as you go, no subscription. Optional; without it Claude infers intent from the query text.</div></div></div>
+      <div class="conn"><span class="ic">⏰</span><div><div class="nm">Scheduled Tasks + Artifacts <span class="tag tag-sage">free, native</span></div><div class="meta">Scheduled Tasks run the Refresher weekly on their own. An Artifact is the live board you keep coming back to.</div></div></div>
+    </div>
+  </div>
+
+  <!-- STEP 2 · THE THREE WRITERS -->
+  <div class="section">
+    <div class="step-tag">Step 2</div>
+    <h2>The three writers, and the prompt for each</h2>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">1 · The Columnist</span></h3>
+      <p>Reads your site, pulls your real queries, clusters them by intent, and drafts pages you do not yet rank for, clearing the E-E-A-T bar.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Use seo-technical to crawl [yoursite.com] and pull my real queries from Search Console. Cluster the keyword opportunities by intent (informational, commercial, transactional, navigational), using DataForSEO for volume and difficulty if it is connected. Then with seo-content, draft a page for the best opportunity I do not yet rank for. Make it clear E-E-A-T. Give me the title, meta description, outline, full draft in my voice, target keyword, internal links and schema.</div></div>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">2 · The Refresher</span> <span class="tag tag-sage">fastest wins</span></h3>
+      <p>Refreshing a slipping post moves you up faster than writing a new one. This finds the decaying pages and the exact issue on each.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Pull my Search Console data and find the pages losing position vs the prior 28 days. For each, tell me what is dragging it down: dead FAQ blocks, dated keywords, thin intros, missing schema, keyword cannibalization or a lost featured snippet. Rank them biggest-impact-fastest, propose a fix schedule across this week, and with seo-content give me ready-to-publish rewritten copy plus a changelog, new title and meta, and FAQ schema for the top 3.</div></div>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">3 · The Quotable</span></h3>
+      <p>Rewrites your passages so AI engines quote you as the source. Then gives you a way to actually test it.</p>
+      <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Use seo-geo. Take this passage [paste your paragraph] and rewrite it so AI engines will quote it: put the answer in the first sentence under 25 words, keep it self-contained with no vague openers, include one concrete claim or number, keep it 40 to 60 words, question-led. Add a FAQPage schema block. Then give me one test question I can paste into ChatGPT, Claude and Perplexity to check if my page shows up as the source.</div></div>
+    </div>
+  </div>
+
+  <!-- LIVE ARTIFACT -->
+  <div class="section">
+    <div class="step-tag">Step 2.5 · the live board</div>
+    <h2>Build the live Content Engine</h2>
+    <p>One board that pulls your real Search Console data, auto-flags slipping pages, surfaces keyword gaps by intent, and scores any passage for AI citability.</p>
+    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Build me a live artifact called "SEO Content Engine". Before you build, call my Google Search Console MCP once to see the real response shape, then build the parser around what you actually see. On load, pull the last 28 days and the prior 28 days (by query and by page) so you can show deltas. Tabs: the Columnist (keyword opportunities from GSC, clustered by intent), the Refresher (auto-flagged slipping pages + a Copy-all fix prompt) with Search Console data nested inside it, and the Quotable (a live citability scorer + FAQ schema). If the GSC MCP is not connected, show a "Connect Search Console" state instead of faking numbers.</div></div>
+    <p style="margin-bottom:0;"><a class="btn-cta" href="seo-content-engine.html" style="margin-top:4px;">See the live Content Engine →</a></p>
+  </div>
+
+  <!-- STEP 3 · AUTOPILOT -->
+  <div class="section">
+    <div class="step-tag">Step 3 · make it run itself</div>
+    <h2>Put the Refresher on autopilot</h2>
+    <p>An artifact only refreshes when you open it. So schedule one tiny task so the engine keeps working when you are not looking.</p>
+    <div class="prompt-box"><div class="prompt-label">Prompt</div><div class="prompt-text">Every Monday at 7am, run the Refresher: pull my latest Search Console data, refresh the board, list any newly slipping pages, and draft the copy fixes for the top 3 so they are ready when I open it.</div></div>
+    <p>Now you never open the app to a blank page, the fixes are waiting.</p>
+  </div>
+
+  <!-- HOW IT FITS -->
+  <div class="section">
+    <div class="step-tag">The full picture</div>
+    <h2>How this fits the rest of the SEO setup</h2>
+    <p>These three guides are one system. Run them together and you cover everything Google and AI score you on.</p>
+    <div class="card">
+      <ul style="margin-bottom:0;">
+        <li><b>Part 1, <a href="index.html">SEO + GEO Autopilot</a></b>, fixes what is on your page: audit, technical health, schema. The foundation.</li>
+        <li><b>Part 2, <a href="backlinks-setup-guide.html">The Backlink Engine</a></b>, fixes what points to your page: who should link you, the outreach, the live link tracker.</li>
+        <li><b>Part 3, this guide</b>, keeps your content fresh, credible and AI-readable, the thing that actually ranks.</li>
+      </ul>
+    </div>
+    <p style="margin-top:14px;">They all share the same spine, your Google Search Console, and the same skill family (the claude-seo set). Set up the project once and all three writers, plus the auditor and the backlink engine, run from it.</p>
+  </div>
+
+  <!-- TOOLKIT -->
+  <div class="section">
+    <div class="step-tag">Every link in one place</div>
+    <h2>Your toolkit</h2>
+    <div class="card">
+      <ul style="margin-bottom:0;">
+        <li><a href="https://claude.ai">Claude</a>, where the whole thing runs (free)</li>
+        <li><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-content/SKILL.md">seo-content</a>, <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-geo/SKILL.md">seo-geo</a> and <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-technical/SKILL.md">seo-technical</a> skills, the three writers (free)</li>
+        <li><a href="https://search.google.com/search-console">Google Search Console</a> + the <a href="https://github.com/AminForou/mcp-gsc">GSC MCP</a>, your data spine (free)</li>
+        <li><a href="https://github.com/dataforseo/mcp-server-typescript">DataForSEO MCP</a> (install commands in the repo README), real volume + intent (paid, pay-as-you-go)</li>
+        <li>The whole <a href="https://github.com/AgriciDaniel/claude-seo">claude-seo skill set</a> on GitHub (free, open source)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="dark-panel">
+    <h2>Want me to set this up <span class="accent">with</span> you?</h2>
+    <p style="margin-top:8px;">Not everyone wants to wire up connectors and projects themselves, and that is completely fine. If you would rather have it built <em>for</em> your brand, with the prompts tuned to your business and the live board running on your real Search Console, book a paid working session with me. We set the whole engine up together, and it stays yours.</p>
+    <a class="btn-cta" href="https://www.vibha.is/taking-meetings">Book a session → vibha.is/taking-meetings</a>
+  </div>
+
+  <div class="foot">Made by Vibha · @vibha.in.progress · save this, you'll come back to it</div>
+
+</div>
+</body>
+</html>
