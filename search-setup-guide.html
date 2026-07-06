@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Search Tracker · Full Setup Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F0E8;--warm:#E8DFD3;--white:#FFFFFF;--dark:#2D2320;--mid:#7A6B62;
+  --berry:#A8174A;--pink:#F2B8C6;--gingham:#E8A0A0;--sage:#6B8856;--dark-sage:#3D5230;--burgundy:#7A1B1B;
+  --font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',-apple-system,sans-serif;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:14px;--radius-full:999px;
+  --shadow-card:0 2px 12px rgba(45,35,32,.06);--shadow-lift:0 4px 20px rgba(45,35,32,.10);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-body);background:var(--cream);color:var(--dark);line-height:1.65;padding:30px 24px 64px;}
+.wrap{max-width:760px;margin:0 auto;}
+h1{font-family:var(--font-display);font-size:38px;font-weight:800;line-height:1.12;}
+h2{font-family:var(--font-display);font-size:24px;font-weight:700;line-height:1.2;}
+h3{font-family:var(--font-display);font-size:17px;font-weight:600;}
+p{font-size:14.5px;color:var(--dark);margin-bottom:12px;}
+.lead{font-size:16px;color:var(--mid);}
+.divider{width:48px;height:3px;background:var(--berry);border-radius:2px;margin:14px 0 18px;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1.5px solid var(--berry);color:var(--berry);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:var(--radius-full);}
+.badge::before{content:'';width:6px;height:6px;background:var(--berry);border-radius:50%;}
+.section{margin-top:38px;}
+.step-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin-bottom:6px;}
+.card{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-card);margin:16px 0;}
+.card-accent-berry{border-left:4px solid var(--berry);}
+.card-accent-sage{border-left:4px solid var(--sage);}
+.prompt-box{background:#FBF7F2;border:1px solid var(--warm);border-left:4px solid var(--berry);border-radius:var(--radius-md);padding:16px 20px;margin:12px 0 18px;position:relative;}
+.prompt-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin-bottom:8px;}
+.prompt-text{font-size:13px;color:var(--dark);line-height:1.7;font-family:'DM Sans',monospace;white-space:pre-wrap;}
+.copybtn{position:absolute;top:12px;right:12px;font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--berry);background:#fff;border:1.5px solid var(--berry);border-radius:6px;padding:4px 12px;cursor:pointer;}
+.copybtn:hover{opacity:.85;}
+.cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0;}
+.cost{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:16px;text-align:center;}
+.cost-num{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--berry);}
+.cost-label{font-size:11.5px;color:var(--mid);margin-top:4px;}
+.tag{display:inline-block;padding:3px 9px;border-radius:5px;font-size:11px;font-weight:600;}
+.tag-sage{background:#F1F4EF;color:var(--sage);border:1px solid #C8D9BE;}
+.tag-amber{background:#FEF8E8;color:#8B6800;border:1px solid #E8D8A0;}
+.tag-burg{background:#FDF0F0;color:var(--burgundy);border:1px solid #E8C0C0;}
+a{color:var(--berry);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gingham);}
+a:hover{opacity:.8;}
+ul{margin:0 0 12px 20px;}li{font-size:14.5px;margin-bottom:7px;}
+.steps-num{counter-reset:s;list-style:none;margin-left:0;}
+.steps-num li{counter-increment:s;position:relative;padding-left:38px;margin-bottom:14px;}
+.steps-num li::before{content:counter(s);position:absolute;left:0;top:0;background:var(--berry);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.loop{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:16px 20px;font-family:var(--font-display);font-size:15px;color:var(--dark);text-align:center;font-weight:600;}
+.dark-panel{background:var(--dark);border-radius:var(--radius-lg);padding:30px;margin-top:20px;}
+.dark-panel h2,.dark-panel h3{color:var(--cream);}
+.dark-panel p{color:#C8BDB8;}
+.dark-panel .accent{color:var(--pink);}
+.btn-cta{display:inline-block;background:var(--berry);color:#fff;font-weight:700;font-size:15px;padding:13px 26px;border-radius:var(--radius-sm);border-bottom:none;margin-top:14px;}
+.foot{margin-top:40px;text-align:center;font-size:12px;color:var(--mid);}
+.skill-name{font-family:var(--font-display);font-weight:700;color:var(--berry);}
+code{background:#FBF0F4;color:var(--berry);font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em;padding:1px 6px;border-radius:5px;border:1px solid #F3D9E2;}
+.topnav{max-width:760px;margin:0 auto 24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.topnav .nl{font-family:var(--font-body);font-size:12px;font-weight:700;text-decoration:none;border:1px solid var(--warm);background:var(--white);color:var(--mid);padding:8px 14px;border-radius:999px;}
+.topnav .nl.active{background:var(--berry);color:#fff;border-color:var(--berry);}
+.topnav .nl:hover{color:var(--dark);opacity:1;}
+.topnav .nl.active:hover{color:#fff;opacity:.92;}
+.ribbon{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--berry);color:#fff;border-radius:var(--radius-md);padding:14px 18px;margin:22px 0 6px;box-shadow:var(--shadow-lift);}
+.ribbon .ribbon-tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--pink);color:var(--dark);padding:4px 11px;border-radius:999px;flex:none;}
+.ribbon .ribbon-txt{font-size:13.5px;font-weight:600;color:#fff;margin:0;}
+.ribbon b{color:#fff;}
+.conn{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--warm);}
+.conn:last-child{border-bottom:none;}
+.conn .ic{font-size:18px;flex:none;line-height:1.2;}
+.conn .nm{font-weight:700;}
+.conn .meta{font-size:13px;color:var(--mid);margin-top:2px;}
+.subnav{max-width:760px;margin:0 auto 22px;padding:0 4px;}.navbtn{display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',-apple-system,sans-serif;font-size:12.5px;font-weight:700;text-decoration:none;background:#A8174A;color:#fff;padding:9px 16px;border-radius:8px;border:none;}.navbtn.ghost{background:#fff;color:#A8174A;border:1.5px solid #A8174A;}.navbtn:hover{opacity:.9;}
+</style>
+</head>
+<body>
+
+<nav class="topnav"><a class="nl" href="index.html">SEO + GEO Guide</a><a class="nl" href="backlinks-setup-guide.html">Backlinks Guide</a><a class="nl" href="content-engine-setup-guide.html">Content Guide</a><a class="nl active" href="search-setup-guide.html">AI Search Guide</a></nav>
+<div class="subnav"><a class="navbtn" href="search.html">View AI Search Tracker →</a></div>
+
+<div class="wrap">
+
+  <span class="badge">Free Guide · @vibha.in.progress</span>
+  <h1 style="margin-top:16px;">The AI Search Tracker</h1>
+  <div class="divider"></div>
+  <p class="lead">Google was about rankings. AI is about being the answer. This is the whole system that checks if ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews recommend your business, finds out why not, fixes your pages, and earns you into the sources they quote. Every account, every skill, every prompt, step by step.</p>
+
+  <div class="ribbon">
+    <span class="ribbon-tag">Read first</span>
+    <p class="ribbon-txt">This is the one guide in the series with a paid piece: <b>DataForSEO</b>. Signing up gives you <b>free trial credit</b>, and a full live check of 12 prompts across 4 AI engines costs <b>under $2</b>. Everything else is free.</p>
+  </div>
+
+  <!-- WHAT YOU'RE BUILDING -->
+  <div class="section">
+    <div class="step-tag">What you're building</div>
+    <h2>One loop that runs your AI visibility</h2>
+    <p>This is part four of the SEO system. Part one (the <a href="index.html">SEO + GEO Autopilot</a>) fixes your pages for Google, part two (<a href="backlinks-setup-guide.html">Backlinks</a>) fixes who vouches for you, part three (<a href="content-engine-setup-guide.html">Content</a>) keeps publishing. This one covers where buyers actually ask now: inside AI chats.</p>
+    <div class="loop">Mirror&nbsp; →&nbsp; Detective&nbsp; →&nbsp; Fixer&nbsp; →&nbsp; Witness&nbsp; →&nbsp; (recheck in 2 to 4 weeks)</div>
+    <p style="margin-top:14px;">And this tracker is different from the rest of the series: the dashboard itself can run <b>real live checks in your browser</b>. You paste one API key, press Run live, and it literally asks each AI engine your buyers' questions and records whether you came up. No coding, no agency tool.</p>
+  </div>
+
+  <!-- COST -->
+  <div class="section">
+    <div class="step-tag">What it costs</div>
+    <h2>Almost free</h2>
+    <div class="cost-grid">
+      <div class="cost"><div class="cost-num">Free</div><div class="cost-label">The tracker file + the seo-geo, seo-dataforseo and seo-content skills</div></div>
+      <div class="cost"><div class="cost-num">Free</div><div class="cost-label">DataForSEO trial credit when you sign up, enough for your first sweeps</div></div>
+      <div class="cost"><div class="cost-num">&lt;$2</div><div class="cost-label">One full live sweep, 12 prompts across 4 AI engines + AI Overviews</div></div>
+    </div>
+    <p>After the trial credit you top up pay-as-you-go. We measured it: a real web-searched check costs about 3 cents per engine, and a full 12-prompt sweep across 4 engines lands around $1.50. There is no subscription for what this tracker does.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="section">
+    <div class="step-tag">Step 1 · 10 minutes</div>
+    <h2>Get your DataForSEO key</h2>
+    <p>DataForSEO is the data company behind this whole system. They run a database of <b>270M+ real prompts</b> people type into AI tools (<a href="https://dataforseo.com/apis/ai-optimization-api/llm-mentions-api">see the live counter on their site</a>) and they can ask ChatGPT, Claude, Gemini and Perplexity questions through one API.</p>
+    <ol class="steps-num">
+      <li>Go to <a href="https://app.dataforseo.com/register">app.dataforseo.com/register</a> and sign up with your email. New accounts come with free trial credit.</li>
+      <li>Verify your email and log in to the dashboard.</li>
+      <li>In the left menu, open <b>API Access</b> (<a href="https://app.dataforseo.com/api-access">app.dataforseo.com/api-access</a>). You will see two things: your <b>API login</b> (your email) and your <b>API password</b>.</li>
+      <li>Copy both. <b>Important:</b> the API password is a separate generated password, not the one you log in with. It lives only on that API Access page.</li>
+      <li>That is the whole account setup. Top up later only when the trial credit runs out.</li>
+    </ol>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section">
+    <div class="step-tag">Step 2 · 5 minutes</div>
+    <h2>Run your first live check</h2>
+    <ol class="steps-num">
+      <li>Open <a href="search.html">the tracker</a>. It loads with demo data so you can see what a filled scorecard looks like.</li>
+      <li>On the <b>Mirror</b> tab, scroll to the <b>⚙ Live mode</b> box.</li>
+      <li>Paste your API login and API password, type your <b>brand name</b> and <b>domain</b>, and press <b>Connect</b>. Your real DataForSEO credit balance appears, that is how you know it worked. (Skipped Connect? No problem, Run live connects by itself as long as the two fields are filled.)</li>
+      <li>Tick the engines you want, then press <b>Run live ▸</b> on any prompt row. Watch the chips flip to what the engines really said, and a strip appear under the row listing <b>the exact sources each engine quoted</b>, with a verdict on whether you are one of them. The Detective tab's trusted-sources chart also switches to live data built from your runs.</li>
+    </ol>
+    <div class="card">
+      <h3>How the live check actually works, in plain English</h3>
+      <p style="margin-top:8px;">When you press Run live, the tracker (from your own browser, your key never goes anywhere except DataForSEO) sends your buyer's question to DataForSEO. They actually ask ChatGPT, Claude, Gemini and Perplexity that question, with web search turned on, and pull a real Google AI Overview for it. The full answers come back and the tracker reads them:</p>
+      <ul style="margin-bottom:6px;">
+        <li><b>✓ cited</b> means your link was in the answer,</li>
+        <li><b>◐ mentioned</b> means your name came up with no link,</li>
+        <li><b>✗ quiet</b> means you never appeared.</li>
+      </ul>
+      <p style="margin-bottom:0;">Every score on the board is computed from those answers, nothing is made up. If a call fails you see an error, never a fake result. One honest gap: <b>Copilot has no public API</b>, so the tracker gives you a copy-paste test question and a direct link to check it by hand.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section">
+    <div class="step-tag">Step 3 · make it yours</div>
+    <h2>Swap in your business, one paste</h2>
+    <p>The demo tracks a facilities management brand. Give Claude this prompt with the tracker file attached and it rebuilds the prompt list for <em>your</em> business, using real AI search volumes, and keeps live mode intact.</p>
+    <div class="prompt-box"><button class="copybtn" onclick="copyPrompt(this)">Copy</button><div class="prompt-label">The one-paste master prompt</div><div class="prompt-text">I'm attaching my AI Search Tracker (search.html). My business: [BRAND], domain [DOMAIN], category [WHAT YOU SELL], customers [WHO BUYS].
+
+1. Using the seo-dataforseo skill (or the DataForSEO MCP), pull the top 12 to 15 prompts people ask AI tools in my category from the AI Keyword Data endpoint, ranked by AI search volume.
+2. Rewrite the PROMPTS list in my tracker with those real prompts and volumes, and set my brand and domain as the defaults.
+3. Keep everything else exactly as is, especially the live mode, the scoring and the tabs.
+4. Give me back the updated file and a one-line summary of the biggest gap you can already see.
+
+Never invent volumes; if you cannot fetch real ones, say so and use the manual route.</div></div>
+  </div>
+
+  <!-- PLAIN ENGLISH -->
+  <div class="section">
+    <div class="step-tag">In plain English</div>
+    <h2>Wait, what are these skills and pieces?</h2>
+    <div class="card">
+      <div class="conn"><span class="ic">📊</span><div><div class="nm">The <b>tracker</b> (search.html) <span class="tag tag-sage">free</span></div><div class="meta">A single HTML file. Double-click it, it opens in your browser and works offline. Your API key is never written into the file, it stays in your browser only, so sharing or publishing the file never shares your key. This is the dashboard you will live in.</div></div></div>
+      <div class="conn"><span class="ic">⚡</span><div><div class="nm"><a href="https://dataforseo.com/apis/ai-optimization-api">DataForSEO AI Optimization API</a> <span class="tag tag-burg">paid, cheap</span></div><div class="meta">The data source. Real prompt volumes from a 270M+ prompt database, plus live answers from ChatGPT, Claude, Gemini and Perplexity through one key. Pay per call, cents at a time.</div></div></div>
+      <div class="conn"><span class="ic">🧠</span><div><div class="nm">The <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-geo/SKILL.md">seo-geo</a> skill <span class="tag tag-sage">free</span></div><div class="meta">Teaches Claude the Detective job: can AI crawlers read your site (robots.txt, llms.txt), are your passages quotable, are you named on sites AI trusts. Add it in Settings → Capabilities.</div></div></div>
+      <div class="conn"><span class="ic">🔌</span><div><div class="nm">The <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-dataforseo/SKILL.md">seo-dataforseo</a> skill <span class="tag tag-sage">free</span></div><div class="meta">Teaches Claude to speak to the DataForSEO API for you: prompt volumes, live LLM answers, mention lookups. Pair it with the <a href="https://github.com/dataforseo/mcp-server-typescript">official DataForSEO MCP</a> if you want Claude wired in directly.</div></div></div>
+      <div class="conn"><span class="ic">✍️</span><div><div class="nm">The <a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-content/SKILL.md">seo-content</a> skill <span class="tag tag-sage">free</span></div><div class="meta">The Fixer's toolbox: answer-first rewrites, FAQ schema, the copy structure AI engines actually quote. Same skill the <a href="content-engine-setup-guide.html">Content Engine</a> runs on.</div></div></div>
+    </div>
+  </div>
+
+  <!-- STEP 4 · THE 4 MOVES -->
+  <div class="section">
+    <div class="step-tag">Step 4</div>
+    <h2>The four moves, and the prompt for each</h2>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">1 · The Mirror</span></h3>
+      <p>Shows if AI recommends you. Real buyer prompts, checked live across the engines, scored per engine per prompt.</p>
+      <div class="prompt-box"><button class="copybtn" onclick="copyPrompt(this)">Copy</button><div class="prompt-label">Prompt</div><div class="prompt-text">You are my AI search visibility analyst. My business: [BRAND], domain [DOMAIN], category [CATEGORY].
+1. Using the seo-dataforseo skill or the DataForSEO MCP, pull the top 15 prompts people ask AI tools in my category, ranked by AI search volume.
+2. For each prompt, run it live through ChatGPT, Claude, Gemini and Perplexity with web search on, and check Google AI Overviews via the SERP endpoint.
+3. For every answer record: cited (my URL linked), mentioned (named, no link) or quiet, plus every source URL each engine quoted.
+4. Output a scorecard: prompt x engine, per-engine visibility %, one overall score. Never invent a result; mark failed calls as failed.</div></div>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">2 · The Detective</span></h3>
+      <p>Finds why you are invisible: which sources the engines trust, and whether AI can even read your site.</p>
+      <div class="prompt-box"><button class="copybtn" onclick="copyPrompt(this)">Copy</button><div class="prompt-label">Prompt</div><div class="prompt-text">Use the seo-geo skill. Take the source URLs my Mirror scorecard collected and audit me against them for [DOMAIN].
+1. Rank the domains the engines quoted most, and mark which ones mention me.
+2. Check my site: GPTBot, ClaudeBot, PerplexityBot and Google-Extended access in robots.txt, llms.txt, answer-first blocks, FAQ schema, load speed.
+3. Give me the missing signals ranked by impact, each with a one-line reason.</div></div>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">3 · The Fixer</span></h3>
+      <p>Turns every fail into a paste-ready fix: rewritten copy in the length AI prefers, FAQ schema, crawler permissions, llms.txt.</p>
+      <div class="prompt-box"><button class="copybtn" onclick="copyPrompt(this)">Copy</button><div class="prompt-label">Prompt</div><div class="prompt-text">You are my AI-readability fixer for [DOMAIN]. For every fail the Detective found, hand me the exact paste-ready fix:
+1. A robots.txt block that lets the AI crawlers in.
+2. An llms.txt file describing my site in plain language.
+3. An answer-first rewrite of my key pages: answer in the first 25 words, one concrete number, no marketing fluff.
+4. FAQPage schema with my real customer questions.
+Tell me exactly where each snippet goes, and keep my voice.</div></div>
+    </div>
+
+    <div class="card card-accent-berry">
+      <h3><span class="skill-name">4 · The Witness</span> <span class="tag tag-amber">the long game</span></h3>
+      <p>You cannot edit what ChatGPT says, so you earn your way into what it reads: the Reddit threads, directories and best-of lists the engines already quote.</p>
+      <div class="prompt-box"><button class="copybtn" onclick="copyPrompt(this)">Copy</button><div class="prompt-label">Prompt</div><div class="prompt-text">You are my citation-earning strategist. From the sources my scorecard collected:
+1. List every source I am not on, ranked by citation count x realistic effort (Reddit threads, G2/Capterra style directories, trade press, best-of listicles).
+2. For the top 5, draft the exact contribution in my voice: a helpful Reddit reply (value first, never spam), directory blurbs, a 2-line press pitch, an author outreach email.
+3. Rules: never astroturf, disclose affiliation where required, and remind me engines re-crawl slowly, recheck in 2 to 4 weeks.</div></div>
+      <p style="margin-bottom:0;font-size:13px;"><b>Honest note:</b> this is the slowest move and the strongest one. Fixes show up in days, placements take weeks to get picked up. The tracker's recheck cycle is how you see it land.</p>
+    </div>
+    <p><a class="btn-cta" href="search.html" style="margin-top:4px;">Open the live tracker →</a></p>
+  </div>
+
+  <!-- STEP 5 · AUTOPILOT -->
+  <div class="section">
+    <div class="step-tag">Step 5 · make it run itself</div>
+    <h2>Put the recheck on autopilot</h2>
+    <p>AI answers shift constantly. Schedule one small task in Claude (Settings → Scheduled Tasks) so the recheck happens without you.</p>
+    <div class="prompt-box"><button class="copybtn" onclick="copyPrompt(this)">Copy</button><div class="prompt-label">Prompt</div><div class="prompt-text">Every Monday at 8am, re-run my AI visibility check: my 12 tracked prompts across ChatGPT, Claude, Gemini and Perplexity via DataForSEO, plus Google AI Overviews. Compare to last week's scorecard. Message me only if my visibility score moved, I gained or lost a citation, or a new source started appearing in the answers.</div></div>
+  </div>
+
+  <!-- TOOLKIT -->
+  <div class="section">
+    <div class="step-tag">Every link in one place</div>
+    <h2>Your toolkit</h2>
+    <div class="card">
+      <ul style="margin-bottom:0;">
+        <li><a href="search.html">The AI Search Tracker</a>, the dashboard this guide sets up (free)</li>
+        <li><a href="https://app.dataforseo.com/register">DataForSEO signup</a> + <a href="https://app.dataforseo.com/api-access">your API Access page</a> (free trial credit, then pay per call)</li>
+        <li><a href="https://dataforseo.com/apis/ai-optimization-api/llm-mentions-api">The 270M+ prompt database</a>, the live counter behind the numbers</li>
+        <li><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-geo/SKILL.md">seo-geo skill</a>, the Detective (free)</li>
+        <li><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-dataforseo/SKILL.md">seo-dataforseo skill</a>, Claude's line to the API (free)</li>
+        <li><a href="https://github.com/AgriciDaniel/claude-seo/blob/main/skills/seo-content/SKILL.md">seo-content skill</a>, the Fixer (free)</li>
+        <li><a href="https://github.com/dataforseo/mcp-server-typescript">Official DataForSEO MCP</a>, wire Claude to the API directly (install command in the README)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="dark-panel">
+    <h2>Want me to set this up <span class="accent">with</span> you?</h2>
+    <p style="margin-top:8px;">If you would rather have this running on your real business by the end of a call, prompts tuned to your buyers, tracker rebuilt for your brand, first live sweep done together, book a paid working session with me.</p>
+    <a class="btn-cta" href="https://www.vibha.is/taking-meetings">Book a session → vibha.is/taking-meetings</a>
+  </div>
+
+  <div class="foot">Made by Vibha · @vibha.in.progress · save this, you'll come back to it</div>
+
+</div>
+<script>
+function copyPrompt(btn){const t=btn.parentElement.querySelector('.prompt-text').textContent;navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='Copied ✓';setTimeout(()=>btn.textContent=o,1500);});}
+</script>
+</body>
+</html>
