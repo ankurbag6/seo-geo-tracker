@@ -126,6 +126,11 @@ tr.faded{opacity:0;transform:scale(.97);height:0;pointer-events:none}
 .toast.show{transform:none;opacity:1}
 @media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.dual{grid-template-columns:1fr}.app{padding:22px 15px 90px}.brand-table th:nth-child(3),.brand-table td:nth-child(3){display:none}}
 .topnav{max-width:1080px;margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 4px;}.topnav .nl{font-family:'DM Sans',-apple-system,sans-serif;font-size:12px;font-weight:700;text-decoration:none;border:1px solid #E8DFD3;background:#fff;color:#7A6B62;padding:8px 14px;border-radius:999px;}.topnav .nl.active{background:#A8174A;color:#fff;border-color:#A8174A;}.topnav .nl:hover{color:#2D2320;}.subnav{max-width:1080px;margin:0 auto 22px;padding:0 4px;}.navbtn{display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',-apple-system,sans-serif;font-size:12.5px;font-weight:700;text-decoration:none;background:#A8174A;color:#fff;padding:9px 16px;border-radius:8px;border:none;}.navbtn.ghost{background:#fff;color:#A8174A;border:1.5px solid #A8174A;}.navbtn:hover{opacity:.9;}
+
+/* site copyright */
+.site-copyright{max-width:1080px;margin:38px auto 0;padding:18px 24px 0;border-top:1px solid var(--warm,#E8DFD3);text-align:center;font-size:12px;color:var(--mid,#8A7A72);}
+.site-copyright a{color:var(--berry,#A8174A);font-weight:700;text-decoration:none;border-bottom:none;}
+.site-copyright a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -462,5 +467,7 @@ document.getElementById('replay').onclick=()=>{
   if(active==='ledger')renderLedger(true);else if(active==='map')moneyShot();else document.querySelector('[data-t="map"]').click();
 };
 </script>
+
+<div class="site-copyright">&copy; 2026 Developed &amp; Maintained by <a href="https://www.linkedin.com/in/ankurbag/" target="_blank" rel="noopener noreferrer">Ankur Bag</a> | All Rights Reserved.</div>
 </body>
 </html>

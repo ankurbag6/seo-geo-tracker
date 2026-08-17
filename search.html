@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Visibility Tracker · @vibha.in.progress</title>
+<title>AI Visibility Tracker</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -144,6 +144,11 @@ h2{font-size:19px;margin-bottom:4px}
 .modal .sub2{font-size:11.5px;color:var(--mid);margin-bottom:10px}
 @media(max-width:760px){.stats{grid-template-columns:repeat(3,1fr)}.ebars{grid-template-columns:repeat(2,1fr)}.ba{grid-template-columns:1fr}.stat-num.hero{font-size:38px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* site copyright */
+.site-copyright{max-width:1060px;margin:38px auto 0;padding:18px 24px 0;border-top:1px solid var(--warm,#E8DFD3);text-align:center;font-size:12px;color:var(--mid,#8A7A72);}
+.site-copyright a{color:var(--berry,#A8174A);font-weight:700;text-decoration:none;border-bottom:none;}
+.site-copyright a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -361,7 +366,7 @@ const TARGETS=[
   draft:'Category: CMMS / Facility Management. One-liner: AI agents that run maintenance triage and vendor dispatch end to end. Include 3 screenshots and 2 customer quotes with numbers.'},
  {id:'fdive',site:'facilitiesdive.com',type:'Expert quote pitch',diff:'Hard',days:'2 to 4 weeks',
   ds:'Trade publication engines treat as an authority. Pitch a quote for their AI-in-FM coverage.',
-  draft:'Subject: Data point for your AI in FM coverage. Hi [editor], I run HeyFixit, an AI workforce for facilities teams. Across our portfolio, AI triage cut average response time 60% and no-shows 25%. Happy to share the dataset or a short expert comment for a future piece. 2 lines, yours, Vibha.'},
+  draft:'Subject: Data point for your AI in FM coverage. Hi [editor], I run HeyFixit, an AI workforce for facilities teams. Across our portfolio, AI triage cut average response time 60% and no-shows 25%. Happy to share the dataset or a short expert comment for a future piece. 2 lines, yours, [your name].'},
  {id:'listicle',site:'"Best AI facilities tools" listicles',type:'Author outreach',diff:'Medium',days:'1 to 2 weeks',
   ds:'Three ranked listicles feed the "best tools" answers. None mention you. Authors update quarterly.',
   draft:'Subject: One for your AI facilities tools list. Hi [name], your list ranks well and the AI engines quote it. HeyFixit does AI-native work order triage (different from UpKeep/MaintainX, which added AI on top). If you are updating the piece, here is a 40-word blurb + logo. No hard feelings either way.'}
@@ -552,5 +557,7 @@ if(S.creds){$('dfsLogin').value=S.creds.login;$('dfsPass').value=S.creds.pass;$(
 $('brandIn').value=S.brand;$('domainIn').value=S.domain;
 moneyShot();
 </script>
+
+<div class="site-copyright">&copy; 2026 Developed &amp; Maintained by <a href="https://www.linkedin.com/in/ankurbag/" target="_blank" rel="noopener noreferrer">Ankur Bag</a> | All Rights Reserved.</div>
 </body>
 </html>

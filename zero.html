@@ -217,6 +217,11 @@
     .kpis{grid-template-columns:1fr 1fr;}.tgrid{grid-template-columns:1fr;}.kanban{grid-template-columns:1fr;}
     .honesty{grid-template-columns:1fr;}.wall{grid-template-columns:1fr 1fr;}.fields{grid-template-columns:1fr;}.field.wide{grid-column:auto;}.tstats{grid-template-columns:1fr;}h1{font-size:32px;}
   }
+
+/* site copyright */
+.site-copyright{max-width:1180px;margin:38px auto 0;padding:18px 24px 0;border-top:1px solid var(--warm,#E8DFD3);text-align:center;font-size:12px;color:var(--mid,#8A7A72);}
+.site-copyright a{color:var(--berry,#A8174A);font-weight:700;text-decoration:none;border-bottom:none;}
+.site-copyright a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -622,5 +627,7 @@ if(st.brand){['name','url','cat','does','blog','comp','proof'].forEach(function(
 renderWall();renderFoundation();renderPitch();renderTracker();renderCompBars();renderGap();
 window.addEventListener('load',function(){setTimeout(moneyShot,220);});
 </script>
+
+<div class="site-copyright">&copy; 2026 Developed &amp; Maintained by <a href="https://www.linkedin.com/in/ankurbag/" target="_blank" rel="noopener noreferrer">Ankur Bag</a> | All Rights Reserved.</div>
 </body>
 </html>
