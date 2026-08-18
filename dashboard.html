@@ -24,13 +24,13 @@ h2{font-size:21px;font-weight:700;}
 h3{font-size:15px;font-weight:600;}
 p{font-size:13px;color:var(--mid);}
 .divider{width:48px;height:3px;background:var(--berry);border-radius:2px;margin:12px 0 14px;}
-.badge{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1.5px solid var(--berry);color:var(--berry);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:var(--radius-full);}
-.badge::before{content:'';width:6px;height:6px;background:var(--berry);border-radius:50%;animation:pulse 2s infinite;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1.5px solid var(--sage);color:var(--sage);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:var(--radius-full);}
+.badge::before{content:'';width:6px;height:6px;background:var(--sage);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
 .head-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;}
 .head-meta{text-align:right;font-size:11.5px;color:var(--mid);}
 .head-meta b{color:var(--dark);font-weight:600;}
-.demo-note{font-size:10.5px;color:#B45309;background:#FFF7E8;border:1px solid #F6D69A;padding:3px 9px;border-radius:5px;display:inline-block;margin-top:6px;}
+.cycle-note{font-size:10.5px;color:var(--berry);background:#EEF4FE;border:1px solid var(--gingham);padding:3px 9px;border-radius:5px;display:inline-block;margin-top:6px;}
 .card{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-card);}
 .section{margin-top:22px;}
 .section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin-bottom:12px;}
@@ -93,43 +93,46 @@ p{font-size:13px;color:var(--mid);}
 .brand-table td{padding:11px 13px;font-size:12.5px;border-top:1px solid var(--warm);vertical-align:middle;}
 .brand-table tr.highlight td{background:#F6F9FD;}
 .kw{font-weight:600;color:var(--dark);}.mono{font-family:monospace;font-weight:700;}
+.delta{font-family:var(--font-display);font-size:11.5px;font-weight:700;}
+.delta.up{color:var(--sage);}.delta.down{color:var(--burgundy);}.delta.flat{color:var(--mid);}
 /* score bars */
 .score-bar-wrap{display:flex;align-items:center;gap:8px;min-width:120px;}
 .score-bar-track{flex:1;height:7px;background:var(--warm);border-radius:4px;overflow:hidden;}
 .score-bar-fill{height:100%;background:var(--berry);border-radius:4px;transition:width .9s cubic-bezier(.5,0,.2,1);}
-.score-bar-num{font-family:var(--font-display);font-size:12.5px;font-weight:700;color:var(--dark);min-width:34px;text-align:right;}
+.score-bar-num{font-family:var(--font-display);font-size:12.5px;font-weight:700;color:var(--dark);min-width:40px;text-align:right;}
 .sc-bad .score-bar-fill{background:var(--burgundy);}
 .sc-mid .score-bar-fill{background:#B45309;}
 .sc-good .score-bar-fill{background:var(--sage);}
 /* charts */
-.chart-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;}
-.chart-box{height:300px;}
-.chart-box.small{height:230px;}
-.empty-state{height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1.5px dashed var(--warm);border-radius:var(--radius-md);padding:18px;}
-.empty-state .es-icon{font-size:26px;margin-bottom:8px;opacity:.55;}
-/* ai panel */
-.ai-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.ai-cell{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:13px 10px;text-align:center;}
-.ai-plat{font-size:12px;font-weight:600;color:var(--dark);margin-bottom:8px;}
+.chart-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;}
+.chart-box{height:320px;}
+.chart-box.small{height:240px;}
+/* GSC windows */
+.win-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.win{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-md);padding:16px;box-shadow:var(--shadow-card);}
+.win-lab{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--berry);margin-bottom:10px;}
+.win-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-top:1px solid var(--warm);font-size:12px;color:var(--mid);}
+.win-row:first-of-type{border-top:none;}
+.win-row b{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--dark);}
+/* checklists */
+.checklist{background:var(--white);border:1px solid var(--warm);border-radius:var(--radius-lg);padding:6px 20px;box-shadow:var(--shadow-card);}
+.ci{display:grid;grid-template-columns:26px 1fr auto;gap:12px;padding:11px 0;border-top:1px solid var(--warm);align-items:center;font-size:13px;color:var(--dark);}
+.ci:first-child{border-top:none;}
+.ci .ic{font-size:14px;text-align:center;}
+.ci .note{font-size:11.5px;color:var(--mid);}
+.ci.done .lbl{color:var(--mid);}
 /* log */
-.log-item{display:grid;grid-template-columns:74px 1fr auto;gap:12px;padding:11px 0;border-top:1px solid var(--warm);align-items:center;}
+.log-item{display:grid;grid-template-columns:96px 1fr auto;gap:12px;padding:11px 0;border-top:1px solid var(--warm);align-items:center;}
 .log-item:first-child{border-top:none;}
 .log-date{font-size:11px;font-weight:700;color:var(--berry);}
 .log-fix{font-size:12.5px;color:var(--dark);}
 .log-result{font-size:11px;color:var(--mid);font-weight:600;text-align:right;}
-/* fix cards */
-.fix{background:var(--white);border:1px solid var(--warm);border-left:4px solid var(--berry);border-radius:var(--radius-md);padding:18px 20px;margin-top:14px;box-shadow:var(--shadow-card);}
-.fix-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;}
-.fix-n{font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--berry);}
-.fix h3{margin-top:2px;}
-.fix .where{font-size:12px;color:var(--mid);margin-top:6px;}
-.fix .where b{color:var(--dark);font-weight:600;}
 /* setup callout */
 .setup{background:var(--dark);border-radius:var(--radius-lg);padding:24px;}
 .setup h2,.setup h3{color:var(--cream);}.setup p{color:#B4C6DC;}
 .setup .accent{color:var(--pink);}
 .foot{margin-top:30px;text-align:center;font-size:11px;color:var(--mid);}
-@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr);}.chart-grid,.res-grid,.ai-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr);}.chart-grid,.res-grid,.win-grid{grid-template-columns:1fr 1fr;}}
 .topnav{max-width:1080px;margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 4px;}.topnav .nl{font-family:'DM Sans',-apple-system,sans-serif;font-size:12px;font-weight:700;text-decoration:none;border:1px solid #DDE7F3;background:#fff;color:#5A6E88;padding:8px 14px;border-radius:999px;}.topnav .nl.active{background:#0B5ED7;color:#fff;border-color:#0B5ED7;}.topnav .nl:hover{color:#0C1E36;}.subnav{max-width:1080px;margin:0 auto 22px;padding:0 4px;}.navbtn{display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',-apple-system,sans-serif;font-size:12.5px;font-weight:700;text-decoration:none;background:#0B5ED7;color:#fff;padding:9px 16px;border-radius:8px;border:none;}.navbtn.ghost{background:#fff;color:#0B5ED7;border:1.5px solid #0B5ED7;}.navbtn:hover{opacity:.9;}
 
 /* site copyright */
@@ -148,25 +151,25 @@ h1,h2,h3,h4{letter-spacing:-.02em;}
 <!-- HEADER -->
   <div class="head-row">
     <div>
-      <span class="badge">Audit #1 · Week 1 baseline</span>
+      <span class="badge">Live · Search Console connected</span>
       <h1 style="margin-top:14px;">SEO&nbsp;+&nbsp;GEO Live Report</h1>
       <div class="divider"></div>
       <p style="font-size:14px;">Sentient Counselling &nbsp;·&nbsp; Burnaby, BC &nbsp;·&nbsp; tracking since 17 August 2026</p>
     </div>
     <div class="head-meta">
-      Last audit<br><b>17 August 2026</b><br>
-      <span style="color:var(--mid);font-weight:600;">Baseline set · no trend yet</span>
-      <br><span class="demo-note">Search Console not connected, click + impression rows pending</span>
+      Updated<br><b>18 August 2026</b><br>
+      <span style="color:var(--sage);font-weight:600;">▲ Google 4 → 6.5 since baseline</span>
+      <br><span class="cycle-note">Week 3 closed → Week 4 active</span>
     </div>
   </div>
 
-  <!-- KPI STATS (always visible snapshot) -->
+  <!-- KPI STATS -->
   <div class="stats section">
-    <div class="stat"><div class="stat-num">4<small>/10</small></div><div class="stat-label">Google health</div><div class="stat-delta flat">baseline</div></div>
-    <div class="stat"><div class="stat-num">5<small>/10</small></div><div class="stat-label">AI-search health</div><div class="stat-delta flat">baseline</div></div>
-    <div class="stat"><div class="stat-num">4<small>/7</small></div><div class="stat-label">Directories live</div><div class="stat-delta down">▼ 3 missing</div></div>
-    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Fixes queued</div><div class="stat-delta flat">≈80 min total</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--mid)">—</div><div class="stat-label">Organic Clicks / 28d</div><div class="stat-delta flat">needs Search Console</div></div>
+    <div class="stat"><div class="stat-num">6.5<small>/10</small></div><div class="stat-label">Google health</div><div class="stat-delta up">▲ from 4</div></div>
+    <div class="stat"><div class="stat-num">5.5<small>/10</small></div><div class="stat-label">AI-search health</div><div class="stat-delta up">▲ from 5</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Fixes shipped, Week 3</div><div class="stat-delta up">▲ all live</div></div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Organic Clicks / 28d</div><div class="stat-delta flat">post-fix baseline</div></div>
+    <div class="stat"><div class="stat-num">25</div><div class="stat-label">Avg position / 28d</div><div class="stat-delta flat">movement due Wk 5–6</div></div>
   </div>
 
   <!-- TABS -->
@@ -174,7 +177,7 @@ h1,h2,h3,h4{letter-spacing:-.02em;}
     <div class="tab active" onclick="switchTab(0)">📋 Overview</div>
     <div class="tab" onclick="switchTab(1)">🔍 Google Health<span class="step">· 01</span></div>
     <div class="tab" onclick="switchTab(2)">🕵️ AI-Search Spy<span class="step">· 02</span></div>
-    <div class="tab" onclick="switchTab(3)">🩺 The Diagnoser<span class="step">· 03</span></div>
+    <div class="tab" onclick="switchTab(3)">📊 Search Console<span class="step">· 03</span></div>
     <div class="tab" onclick="switchTab(4)">🔧 The Fixer<span class="step">· 04</span></div>
     <div class="tab" onclick="switchTab(5)">📈 Live Report<span class="step">· 05</span></div>
     <div class="tab" onclick="switchTab(6)">🔗 Directories<span class="step">· 06</span></div>
@@ -182,218 +185,279 @@ h1,h2,h3,h4{letter-spacing:-.02em;}
 
   <!-- ===== PANEL 0 · OVERVIEW ===== -->
   <div class="panel active">
-    <div class="panel-head"><div><h2>Baseline scorecard, Audit&nbsp;#1</h2></div><span class="tag tag-berry" style="font-size:11.5px;">17 Aug 2026</span></div>
-    <p class="panel-sub">Findable, but losing to directories and your own placeholder text. Eight rows, scored the same way every week so the comparison stays clean.</p>
-
-    <div class="flagbox">
-      <div class="ns-tag">⚠ One flag before the scorecard</div>
-      <p style="margin-bottom:0;">I couldn't pull Search Console numbers, there's no Search Console connection in this chat. Everything below comes from <b>live crawls and real search results</b>, which is enough for a solid baseline, but click and impression data needs either a Search Console connection or an export (Performance → last 3 months → Export). Claude for Chrome is connected, so I can also drive your browser into Search Console next session and read the numbers directly. Just say the word.</p>
-    </div>
+    <div class="panel-head"><div><h2>Scorecard, Week 3 closed</h2></div><span class="tag tag-berry" style="font-size:11.5px;">18 Aug 2026</span></div>
+    <p class="panel-sub">Nine fixes shipped. Google health up 2.5 points, on-page nearly doubled, local live for the first time. Directory coverage is the one row that moved backwards, on purpose.</p>
 
     <div class="section">
-      <div class="section-label">The eight rows</div>
+      <div class="section-label">Seven rows + overall, versus the 17 Aug baseline</div>
       <table class="brand-table">
-        <thead><tr><th style="width:190px;">Area</th><th style="width:150px;">Score</th><th>What I found</th></tr></thead>
+        <thead><tr><th style="width:180px;">Area</th><th style="width:160px;">Score</th><th style="width:70px;">Δ</th><th>Status</th></tr></thead>
         <tbody>
-          <tr class="highlight"><td class="kw">Google: Indexing</td><td><div class="score-bar-wrap sc-good"><div class="score-bar-track"><div class="score-bar-fill" style="width:70%"></div></div><span class="score-bar-num">7/10</span></div></td><td>Site is indexed. Homepage, /south-asian-therapist and service pages all show up in results</td></tr>
-          <tr><td class="kw">Google: On-page</td><td><div class="score-bar-wrap sc-bad"><div class="score-bar-track"><div class="score-bar-fill" style="width:30%"></div></div><span class="score-bar-num">3/10</span></div></td><td>A live, indexed service page still contains Wix placeholder text: <em>"Use this area to describe one of your services… What makes it great?"</em> Google is showing template filler to potential clients</td></tr>
-          <tr class="highlight"><td class="kw">Google: Local</td><td><div class="score-bar-wrap sc-bad"><div class="score-bar-track"><div class="score-bar-fill" style="width:30%"></div></div><span class="score-bar-num">3/10</span></div></td><td>Title says "Vancouver" but your address is 201-3701 E Hastings St, <b>Burnaby</b>, mixed signals. Couldn't find a Google Business Profile in results at all</td></tr>
-          <tr><td class="kw">Google: Brand clarity</td><td><div class="score-bar-wrap sc-bad"><div class="score-bar-track"><div class="score-bar-fill" style="width:40%"></div></div><span class="score-bar-num">4/10</span></div></td><td>A UK practice with the identical name (sentientcounselling.co.uk) shares your brand results, splitting your visibility</td></tr>
-          <tr class="highlight"><td class="kw">AI: Entity presence</td><td><div class="score-bar-wrap sc-mid"><div class="score-bar-track"><div class="score-bar-fill" style="width:60%"></div></div><span class="score-bar-num">6/10</span></div></td><td>You exist in the sources AI reads: BCACC directory, Healing in Colour (with your fees: $75 low-cost, $140 regular), Lumino Health, Crunchbase</td></tr>
-          <tr><td class="kw">AI: Directory coverage</td><td><div class="score-bar-wrap sc-bad"><div class="score-bar-track"><div class="score-bar-fill" style="width:40%"></div></div><span class="score-bar-num">4/10</span></div></td><td>Missing from the two directories AI cites most for your exact niche: <b>southasiantherapists.org</b> and <b>Psychology Today</b>. When AI answers "find me a South Asian therapist in Vancouver," competitors get named, you don't</td></tr>
-          <tr class="highlight"><td class="kw">AI: Fact consistency</td><td><div class="score-bar-wrap sc-mid"><div class="score-bar-track"><div class="score-bar-fill" style="width:50%"></div></div><span class="score-bar-num">5/10</span></div></td><td>Crunchbase says you offer EMDR; your site says Somatic Experiencing (Basic). AI models distrust and dilute entities with conflicting facts</td></tr>
-          <tr style="background:#EEF4FE;"><td class="kw"><b>Overall</b></td><td><span class="tag tag-burg">Google 4/10</span> <span class="tag tag-amber">AI 5/10</span></td><td><b>Findable, but losing to directories and your own placeholder text</b></td></tr>
+          <tr class="highlight"><td class="kw">Google: Indexing</td><td><div class="score-bar-wrap sc-good"><div class="score-bar-track"><div class="score-bar-fill" style="width:70%"></div></div><span class="score-bar-num">7</span></div></td><td><span class="delta flat">—</span></td><td>Fixes live; Google re-crawl pending</td></tr>
+          <tr><td class="kw">Google: On-page</td><td><div class="score-bar-wrap sc-good"><div class="score-bar-track"><div class="score-bar-fill" style="width:75%"></div></div><span class="score-bar-num">7.5</span></div></td><td><span class="delta up">▲4.5</span></td><td>Title, meta, links and phone all fixed</td></tr>
+          <tr class="highlight"><td class="kw">Google: Local</td><td><div class="score-bar-wrap sc-mid"><div class="score-bar-track"><div class="score-bar-fill" style="width:60%"></div></div><span class="score-bar-num">6</span></div></td><td><span class="delta up">▲3</span></td><td>GBP live, 5.0★ ×8, map pin confirmed</td></tr>
+          <tr><td class="kw">Google: Brand clarity</td><td><div class="score-bar-wrap sc-mid"><div class="score-bar-track"><div class="score-bar-fill" style="width:60%"></div></div><span class="score-bar-num">6</span></div></td><td><span class="delta up">▲2</span></td><td>Brand panel owns the SERP; position 4.1 → target 1</td></tr>
+          <tr class="highlight"><td class="kw">AI: Entity presence</td><td><div class="score-bar-wrap sc-good"><div class="score-bar-track"><div class="score-bar-fill" style="width:70%"></div></div><span class="score-bar-num">7</span></div></td><td><span class="delta up">▲1</span></td><td>Stronger, more consistent entity across sources</td></tr>
+          <tr><td class="kw">AI: Directory coverage</td><td><div class="score-bar-wrap sc-bad"><div class="score-bar-track"><div class="score-bar-fill" style="width:35%"></div></div><span class="score-bar-num">3.5</span></div></td><td><span class="delta down">▼0.5</span></td><td>Healing in Colour removed, Psychology Today declined; SAT.org pending</td></tr>
+          <tr class="highlight"><td class="kw">AI: Fact consistency</td><td><div class="score-bar-wrap sc-mid"><div class="score-bar-track"><div class="score-bar-fill" style="width:65%"></div></div><span class="score-bar-num">6.5</span></div></td><td><span class="delta up">▲1.5</span></td><td>One conflicting source eliminated</td></tr>
+          <tr style="background:#EEF4FE;"><td class="kw"><b>Overall</b></td><td><span class="tag tag-sage">Google 6.5/10</span> <span class="tag tag-amber">AI 5.5/10</span></td><td><span class="delta up">▲2.5 / ▲0.5</span></td><td><b>Fixes are live; the search data hasn't caught up yet</b></td></tr>
         </tbody>
       </table>
     </div>
 
+    <div class="flagbox">
+      <div class="ns-tag">⚠ Read the directory row correctly</div>
+      <p style="margin-bottom:0;">Directory coverage fell to 3.5 because the Healing in Colour profile was deleted and Psychology Today was declined as paid. That was a deliberate trade: deleting the profile removed the fee conflict, which is exactly why <b>fact consistency rose to 6.5</b>. The row recovers when the southasiantherapists.org listing goes live this week.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Search Console, now flowing</div>
+      <div class="win-grid">
+        <div class="win">
+          <div class="win-lab">3 months</div>
+          <div class="win-row"><span>Clicks</span><b>43</b></div>
+          <div class="win-row"><span>Impressions</span><b>4,680</b></div>
+          <div class="win-row"><span>CTR</span><b>0.9%</b></div>
+          <div class="win-row"><span>Avg position</span><b>24.6</b></div>
+        </div>
+        <div class="win">
+          <div class="win-lab">28 days</div>
+          <div class="win-row"><span>Clicks</span><b>7</b></div>
+          <div class="win-row"><span>Impressions</span><b>1,160</b></div>
+          <div class="win-row"><span>CTR</span><b>0.6%</b></div>
+          <div class="win-row"><span>Avg position</span><b>25</b></div>
+        </div>
+        <div class="win">
+          <div class="win-lab">7 days</div>
+          <div class="win-row"><span>Clicks</span><b>1</b></div>
+          <div class="win-row"><span>Impressions</span><b>241</b></div>
+          <div class="win-row"><span>CTR</span><b>0.4%</b></div>
+          <div class="win-row"><span>Avg position</span><b>28.9</b></div>
+        </div>
+      </div>
+      <p style="font-size:11.5px;margin-top:10px;">Organic only. This is the <b>post-fix baseline</b>, not a verdict, the fixes went live inside these windows. Movement is expected Week 5 to 6, once Google re-crawls.</p>
+    </div>
+
     <div class="nextstep">
-      <div class="ns-tag">▶ Your next step</div>
-      <p>Open <b>The Fixer</b> tab. Five fixes, ordered highest impact for least effort, each with the exact place to paste it. The first one takes 10 minutes and stops Google showing template filler to clients, do that today.</p>
+      <div class="ns-tag">▶ Week 4, committed</div>
+      <p>Two commitments this week: the <b>southasiantherapists.org listing</b> and the <b>Google Ads launch</b> (landing page /free-consultation, geo Burnaby + Vancouver). Four confirmations are still open, all in The Fixer tab.</p>
     </div>
   </div>
 
   <!-- ===== PANEL 1 · GOOGLE HEALTH ===== -->
   <div class="panel">
-    <div class="panel-head"><div><h2>🔍 Google Health</h2></div></div>
-    <p class="panel-sub">Live crawl plus real search results. <strong>Result:</strong> indexed and findable, undercut by placeholder copy and a Burnaby/Vancouver split.</p>
-    <div class="tools-live"><span class="tool-chip">Live crawl</span><span class="tool-chip">Real search results</span><span class="tool-chip off">Search Console, not connected</span></div>
+    <div class="panel-head"><div><h2>🔍 Google Health</h2></div><span class="tag tag-sage" style="font-size:11.5px;">6.5 / 10 ▲ from 4</span></div>
+    <p class="panel-sub">Every Week 3 fix is live on the site. What's left is Google noticing, plus two access-blocked items.</p>
+    <div class="tools-live"><span class="tool-chip">Search Console, verified</span><span class="tool-chip">Google Business Profile, live</span><span class="tool-chip">Live crawl</span></div>
     <div class="res-grid section">
-      <div class="res"><div class="res-num" style="color:var(--sage)">7<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Indexing</div></div>
-      <div class="res"><div class="res-num" style="color:var(--burgundy)">3<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">On-page</div></div>
-      <div class="res"><div class="res-num" style="color:var(--burgundy)">3<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Local</div></div>
-      <div class="res"><div class="res-num" style="color:var(--burgundy)">4<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Brand clarity</div></div>
+      <div class="res"><div class="res-num" style="color:var(--sage)">7<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Indexing <span class="delta flat">—</span></div></div>
+      <div class="res"><div class="res-num" style="color:var(--sage)">7.5<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">On-page <span class="delta up">▲4.5</span></div></div>
+      <div class="res"><div class="res-num" style="color:#B45309">6<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Local <span class="delta up">▲3</span></div></div>
+      <div class="res"><div class="res-num" style="color:#B45309">6<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Brand clarity <span class="delta up">▲2</span></div></div>
     </div>
     <div class="section">
-      <div class="section-label">What it found, ranked by impact</div>
+      <div class="section-label">Where each row stands now</div>
       <table class="brand-table">
-        <thead><tr><th>Issue</th><th>Severity</th><th>Where</th><th>Fix</th></tr></thead>
+        <thead><tr><th>Row</th><th>Score</th><th>What changed in Week 3</th><th>What's blocking a higher score</th></tr></thead>
         <tbody>
-          <tr class="highlight"><td>Wix placeholder text live on an indexed service page</td><td><span class="tag tag-burg">High</span></td><td>Free 20-min Consultation</td><td>Fix 1 → The Fixer</td></tr>
-          <tr><td>No Google Business Profile found in results</td><td><span class="tag tag-burg">High</span></td><td>Local / Maps</td><td>Fix 2 → The Fixer</td></tr>
-          <tr class="highlight"><td>Title claims Vancouver, address is Burnaby</td><td><span class="tag tag-burg">High</span></td><td>Homepage title tag</td><td>Fix 4 → The Fixer</td></tr>
-          <tr><td>Brand results shared with a UK practice of the same name</td><td><span class="tag tag-amber">Med</span></td><td>sentientcounselling.co.uk</td><td>Strengthen local + directory signals</td></tr>
-          <tr class="highlight"><td>Clicks, impressions and CTR unavailable</td><td><span class="tag tag-neutral">Blocked</span></td><td>Search Console</td><td>Connect or paste an export</td></tr>
+          <tr class="highlight"><td class="kw">Indexing</td><td><span class="tag tag-sage">7</span></td><td>All fixes published site-wide</td><td>Google re-crawl pending; indexing requests need Full/Owner access in GSC</td></tr>
+          <tr><td class="kw">On-page</td><td><span class="tag tag-sage">7.5</span></td><td>Title tag, meta description, hero CTA, phone number, dead links, Burnaby wording</td><td>Stale snippets still showing old copy until re-crawl</td></tr>
+          <tr class="highlight"><td class="kw">Local</td><td><span class="tag tag-amber">6</span></td><td>GBP live with 8 reviews at 5.0★ and a confirmed map pin; first GBP post published</td><td>GBP description, services and booking link not confirmed complete</td></tr>
+          <tr><td class="kw">Brand clarity</td><td><span class="tag tag-amber">6</span></td><td>Brand panel now owns the SERP for your name</td><td>Brand position 4.1, target 1</td></tr>
         </tbody>
       </table>
     </div>
     <div class="nextstep">
       <div class="ns-tag">▶ Your next step</div>
-      <p style="margin-bottom:10px;">The three High rows are all in The Fixer with paste-ready copy. To unblock the last row, paste this into Claude once Search Console is connected:</p>
-      <div class="codebox"><div class="cb-head"><span class="cb-label">Prompt</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">Pull my Search Console data for Sentient Counselling, last 3 months. Give me clicks, impressions, average CTR and average position overall, then the top 20 queries and the top 10 pages. Flag any query where I get impressions but almost no clicks, that is a title and meta problem I can fix this week. Add clicks and impressions as rows 9 and 10 of my baseline scorecard.</pre></div>
+      <p style="margin-bottom:0;">Get <b>Full / Owner access in Search Console</b> so indexing can be requested for the homepage and Services &amp; Fees. That is the single fastest way to convert shipped fixes into re-crawled, updated snippets.</p>
     </div>
   </div>
 
   <!-- ===== PANEL 2 · AI-SEARCH SPY ===== -->
   <div class="panel">
-    <div class="panel-head"><div><h2>🕵️ The AI-Search Spy</h2></div></div>
-    <p class="panel-sub">Where AI models look before they answer "find me a South Asian therapist in Vancouver." <strong>Result:</strong> you exist in the sources, but not the two that get cited most.</p>
-    <div class="tools-live"><span class="tool-chip">Live crawl</span><span class="tool-chip">Directory checks</span><span class="tool-chip">Entity fact check</span></div>
-
-    <div class="section">
-      <div class="section-label">Sources AI reads, where you show up</div>
-      <div class="ai-grid">
-        <div class="ai-cell"><div class="ai-plat">BCACC directory</div><span class="tag tag-sage">Listed ✓</span></div>
-        <div class="ai-cell"><div class="ai-plat">Healing in Colour</div><span class="tag tag-sage">Listed ✓</span></div>
-        <div class="ai-cell"><div class="ai-plat">Lumino Health</div><span class="tag tag-sage">Listed ✓</span></div>
-        <div class="ai-cell"><div class="ai-plat">Crunchbase</div><span class="tag tag-amber">Listed, wrong facts</span></div>
-      </div>
-      <div class="ai-grid" style="margin-top:10px;">
-        <div class="ai-cell"><div class="ai-plat">southasiantherapists.org</div><span class="tag tag-burg">Missing</span></div>
-        <div class="ai-cell"><div class="ai-plat">Psychology Today</div><span class="tag tag-burg">Missing</span></div>
-        <div class="ai-cell"><div class="ai-plat">Google Business Profile</div><span class="tag tag-burg">Not found</span></div>
-        <div class="ai-cell"><div class="ai-plat">Wellnest</div><span class="tag tag-neutral">Cited, not you</span></div>
-      </div>
-      <p style="font-size:11.5px;margin-top:10px;">Healing in Colour already carries your real fees, $75 low-cost and $140 regular. That's the bio to reuse everywhere else so the facts match.</p>
+    <div class="panel-head"><div><h2>🕵️ The AI-Search Spy</h2></div><span class="tag tag-amber" style="font-size:11.5px;">5.5 / 10 ▲ from 5</span></div>
+    <p class="panel-sub">The entity got cleaner and more consistent. Coverage got thinner, by choice. One listing away from both moving together.</p>
+    <div class="tools-live"><span class="tool-chip">Entity fact check</span><span class="tool-chip">Directory checks</span><span class="tool-chip off">SAT.org listing, pending</span></div>
+    <div class="res-grid section">
+      <div class="res"><div class="res-num" style="color:var(--sage)">7<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Entity presence <span class="delta up">▲1</span></div></div>
+      <div class="res"><div class="res-num" style="color:var(--burgundy)">3.5<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Directory coverage <span class="delta down">▼0.5</span></div></div>
+      <div class="res"><div class="res-num" style="color:#B45309">6.5<span style="font-size:13px;color:var(--mid)">/10</span></div><div class="res-lab">Fact consistency <span class="delta up">▲1.5</span></div></div>
+      <div class="res"><div class="res-num" style="color:var(--berry)">1</div><div class="res-lab">Conflicting source removed</div></div>
     </div>
-
     <div class="section">
-      <div class="section-label">Fact consistency, what different sources say about you</div>
+      <div class="section-label">The trade you made, and what it bought</div>
       <table class="brand-table">
-        <thead><tr><th>Fact</th><th>Your site says</th><th>Third party says</th><th>Status</th></tr></thead>
+        <thead><tr><th>Change</th><th>Cost</th><th>Gain</th><th>Net</th></tr></thead>
         <tbody>
-          <tr class="highlight"><td class="kw">Modality</td><td>Somatic Experiencing (Basic)</td><td>Crunchbase: EMDR</td><td><span class="tag tag-burg">Conflict</span></td></tr>
-          <tr><td class="kw">Location</td><td>Title says Vancouver</td><td>201-3701 E Hastings St, Burnaby</td><td><span class="tag tag-burg">Conflict</span></td></tr>
-          <tr class="highlight"><td class="kw">Fees</td><td>—</td><td>Healing in Colour: $75 low-cost, $140 regular</td><td><span class="tag tag-amber">Only off-site</span></td></tr>
-          <tr><td class="kw">Brand name</td><td>Sentient Counselling</td><td>sentientcounselling.co.uk (UK, unrelated)</td><td><span class="tag tag-amber">Split</span></td></tr>
+          <tr class="highlight"><td class="kw">Healing in Colour profile deleted</td><td>One directory citation lost</td><td>Fee conflict eliminated across sources</td><td><span class="tag tag-sage">Worth it</span></td></tr>
+          <tr><td class="kw">Psychology Today declined</td><td>The other most-cited therapist directory stays empty</td><td>Budget preserved, it's a paid listing</td><td><span class="tag tag-amber">Revisit later</span></td></tr>
+          <tr class="highlight"><td class="kw">southasiantherapists.org pending</td><td>Still missing from your highest-value niche directory</td><td>Committed for Week 4</td><td><span class="tag tag-berry">In flight</span></td></tr>
         </tbody>
       </table>
+      <p style="font-size:11.5px;margin-top:8px;">Directory coverage recovers the moment SAT.org goes live, and that listing is also the one most likely to trigger an AI Overview citation. That check is on the Week 5 watch list.</p>
     </div>
-
     <div class="nextstep">
       <div class="ns-tag">▶ Your next step</div>
-      <p style="margin-bottom:0;">Fixes 3 and 5 close both AI gaps: get listed where AI actually looks, and make every listing tell the same story. One consistent story across every listing is what makes AI models confidently recommend you.</p>
+      <p style="margin-bottom:0;">Ship the SAT.org listing this week, then re-run the AI Overview citation check. One listing lifts both the coverage row and the presence row.</p>
     </div>
   </div>
 
-  <!-- ===== PANEL 3 · THE DIAGNOSER ===== -->
+  <!-- ===== PANEL 3 · SEARCH CONSOLE ===== -->
   <div class="panel">
-    <div class="panel-head"><div><h2>🩺 The Diagnoser</h2></div></div>
-    <p class="panel-sub">Why each score landed where it did, and what actually moves it. Effort is real clock time, not estimates padded for comfort.</p>
+    <div class="panel-head"><div><h2>📊 Search Console</h2></div><span class="tag tag-sage" style="font-size:11.5px;">Verified · data flowing</span></div>
+    <p class="panel-sub">Organic only. Read this as the <strong>post-fix baseline</strong>: the Week 3 fixes went live inside these windows, so the numbers describe the site before Google re-crawled it.</p>
     <div class="section">
-      <table class="brand-table">
-        <thead><tr><th>Root cause</th><th>Costs you</th><th>Effort</th><th>Moves</th><th>Fix</th></tr></thead>
-        <tbody>
-          <tr class="highlight"><td class="kw">Template filler is live and indexed</td><td>Clients read "What makes it great?" instead of your offer</td><td><span class="tag tag-sage">10 min</span></td><td>On-page 3 → 7</td><td>Fix 1</td></tr>
-          <tr><td class="kw">No Google Business Profile</td><td>You're absent from Maps, "near me" and AI Overviews</td><td><span class="tag tag-amber">30 min</span></td><td>Local 3 → 6</td><td>Fix 2</td></tr>
-          <tr class="highlight"><td class="kw">Missing from the niche directories</td><td>AI names competitors for your exact money keyword</td><td><span class="tag tag-sage">20 min</span></td><td>Directory 4 → 7</td><td>Fix 3</td></tr>
-          <tr><td class="kw">Burnaby / Vancouver split</td><td>You rank strongly in neither city</td><td><span class="tag tag-sage">15 min</span></td><td>Local + Brand</td><td>Fix 4</td></tr>
-          <tr class="highlight"><td class="kw">Conflicting modality on Crunchbase</td><td>AI dilutes entities whose facts disagree</td><td><span class="tag tag-sage">5 min</span></td><td>Consistency 5 → 8</td><td>Fix 5</td></tr>
-        </tbody>
-      </table>
-      <p style="font-size:11.5px;margin-top:8px;">Projected scores assume the fix ships and the page is re-crawled. Next audit measures the real move, not the projection.</p>
+      <div class="win-grid">
+        <div class="win">
+          <div class="win-lab">3 months</div>
+          <div class="win-row"><span>Clicks</span><b>43</b></div>
+          <div class="win-row"><span>Impressions</span><b>4,680</b></div>
+          <div class="win-row"><span>CTR</span><b>0.9%</b></div>
+          <div class="win-row"><span>Avg position</span><b>24.6</b></div>
+        </div>
+        <div class="win">
+          <div class="win-lab">28 days</div>
+          <div class="win-row"><span>Clicks</span><b>7</b></div>
+          <div class="win-row"><span>Impressions</span><b>1,160</b></div>
+          <div class="win-row"><span>CTR</span><b>0.6%</b></div>
+          <div class="win-row"><span>Avg position</span><b>25</b></div>
+        </div>
+        <div class="win">
+          <div class="win-lab">7 days</div>
+          <div class="win-row"><span>Clicks</span><b>1</b></div>
+          <div class="win-row"><span>Impressions</span><b>241</b></div>
+          <div class="win-row"><span>CTR</span><b>0.4%</b></div>
+          <div class="win-row"><span>Avg position</span><b>28.9</b></div>
+        </div>
+      </div>
     </div>
-    <div class="nextstep">
-      <div class="ns-tag">▶ Your next step</div>
-      <p style="margin-bottom:0;">Total queued work is about <b>80 minutes</b>. Doing all five before the next audit is realistic in one sitting.</p>
+    <div class="section">
+      <div class="chart-grid">
+        <div class="card"><h3 style="margin-bottom:6px;">Impressions are there, clicks are not</h3><p style="margin-bottom:10px;">CTR by window, against the 3% target</p><div class="chart-box small" id="ctrChart"></div></div>
+        <div class="card"><h3 style="margin-bottom:6px;">What the numbers say</h3>
+          <p style="margin-bottom:10px;">You are being <b>shown</b>, at 1,160 impressions in 28 days, and almost never <b>clicked</b>, at 7. Two causes, both already being worked:</p>
+          <ul style="font-size:12.5px;color:var(--mid);padding-left:18px;line-height:1.85;">
+            <li>Average position 25 means most impressions come from page 3, where clicks are rare by definition.</li>
+            <li>Snippets still show pre-fix copy until Google re-crawls, so the new title and meta aren't earning clicks yet.</li>
+          </ul>
+          <p style="margin-top:10px;">CTR of 0.6% against a 3% target is the headline number on the Week 5 watch list.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flagbox">
+      <div class="ns-tag">⏳ Access blocked</div>
+      <p style="margin-bottom:0;">Requesting indexing for the homepage and Services &amp; Fees needs <b>Full or Owner</b> permission in Search Console. Current access can read data but not submit indexing requests.</p>
     </div>
   </div>
 
   <!-- ===== PANEL 4 · THE FIXER ===== -->
   <div class="panel">
-    <div class="panel-head"><div><h2>🔧 The Fixer</h2></div></div>
-    <p class="panel-sub">Highest impact for least effort first. <strong>Copy each block → paste where noted → come back and re-audit.</strong></p>
+    <div class="panel-head"><div><h2>🔧 The Fixer</h2></div><span class="tag tag-sage" style="font-size:11.5px;">9 shipped · 6 open</span></div>
+    <p class="panel-sub">Week 3 is closed. Week 4 has two commitments and four confirmations.</p>
 
-    <div class="fix">
-      <div class="fix-head">
-        <div><div class="fix-n">Fix 1 · do today</div><h3>Delete the placeholder text</h3></div>
-        <span class="tag tag-sage">10 minutes</span>
+    <div class="section">
+      <div class="section-label">✅ Shipped in Week 3</div>
+      <div class="checklist">
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">Homepage title tag, Burnaby &amp; Vancouver</div><div class="note">On-page</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">Homepage meta description</div><div class="note">On-page</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">Hero BOOK NOW → /free-consultation</div><div class="note">Conversion</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">Phone consistent site-wide, 604 358 7905</div><div class="note">NAP consistency</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">Dead "minutes" links → 301 redirect</div><div class="note">Technical</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">"Counselling in Burnaby" wording on homepage contact section</div><div class="note">Local</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">GBP post published, Burnaby Counselling</div><div class="note">Local</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">"Services &amp; Fees V1" / blank menu item removed</div><div class="note">On-page</div></div>
+        <div class="ci done"><div class="ic">✅</div><div class="lbl">Search Console verified, data flowing</div><div class="note">Measurement</div></div>
       </div>
-      <p class="where"><b>Where:</b> Wix dashboard → Bookings → Services → "Free 20-minute Consultation" → Description field. Paste this:</p>
-      <div class="codebox"><div class="cb-head"><span class="cb-label">Service description</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">This free 20-minute video call is a no-pressure chance to see if we're a good fit. Tell me what's bringing you to counselling, ask anything about my approach, and get a feel for how I work. Sessions are online across BC, offered in English, Bengali, and Hindi. Regular sessions are $140; low-cost spots are $75.</pre></div>
     </div>
 
-    <div class="fix">
-      <div class="fix-head">
-        <div><div class="fix-n">Fix 2</div><h3>Create or claim your Google Business Profile</h3></div>
-        <span class="tag tag-amber">30 minutes</span>
+    <div class="section">
+      <div class="section-label">🔜 Week 4, committed this week</div>
+      <div class="checklist">
+        <div class="ci"><div class="ic">🔜</div><div class="lbl"><b>southasiantherapists.org listing</b>, reuse one canonical bio so every fact matches</div><div class="note">Directory 3.5 → 7</div></div>
+        <div class="ci"><div class="ic">🔜</div><div class="lbl"><b>Google Ads launch</b>, landing page /free-consultation, geo Burnaby + Vancouver</div><div class="note">Paid, new rows</div></div>
       </div>
-      <p class="where"><b>Where:</b> business.google.com → add "Sentient Counselling," address <b>201-3701 E Hastings St, Burnaby</b>, category <b>"Counsellor."</b></p>
-      <p class="where">This is the single biggest reason competitors show up on the map and in AI Overviews for "counsellor near me" while you don't. If you already have one, tell me and I'll audit it next week instead.</p>
     </div>
 
-    <div class="fix">
-      <div class="fix-head">
-        <div><div class="fix-n">Fix 3</div><h3>Get listed on southasiantherapists.org</h3></div>
-        <span class="tag tag-sage">20 minutes</span>
+    <div class="section">
+      <div class="section-label">⏳ Open, needs access or confirmation</div>
+      <div class="checklist">
+        <div class="ci"><div class="ic">⏳</div><div class="lbl">Request indexing in GSC, homepage and Services &amp; Fees</div><div class="note">Needs Full / Owner</div></div>
+        <div class="ci"><div class="ic">⏳</div><div class="lbl">Remove Healing in Colour badge from site footer</div><div class="note">Profile is deleted</div></div>
+        <div class="ci"><div class="ic">⏳</div><div class="lbl">Confirm Burnaby wording is published live, was still in the editor</div><div class="note">Verify on live site</div></div>
+        <div class="ci"><div class="ic">⏳</div><div class="lbl">Confirm GBP completion, description, services, booking link</div><div class="note">Local 6 → 8</div></div>
       </div>
-      <p class="where"><b>Where:</b> southasiantherapists.org → "Join as a Therapist."</p>
-      <p class="where">Their BC page ranks at the top for your money keyword and gets cited by ChatGPT and Perplexity. Reuse your <b>Healing in Colour bio word-for-word</b> so the facts match everywhere.</p>
     </div>
 
-    <div class="fix">
-      <div class="fix-head">
-        <div><div class="fix-n">Fix 4</div><h3>Fix the Burnaby / Vancouver split</h3></div>
-        <span class="tag tag-sage">15 minutes</span>
+    <div class="section">
+      <div class="section-label">✖ Declined or closed by choice</div>
+      <div class="checklist">
+        <div class="ci"><div class="ic" style="color:var(--mid)">✖</div><div class="lbl">Somatic paragraph</div><div class="note">93 impr/mo left unaddressed</div></div>
+        <div class="ci"><div class="ic" style="color:var(--mid)">✖</div><div class="lbl">Psychology Today</div><div class="note">Paid listing</div></div>
+        <div class="ci"><div class="ic" style="color:var(--mid)">✖</div><div class="lbl">Full Burnaby page</div><div class="note">GBP post + homepage section instead</div></div>
+        <div class="ci"><div class="ic" style="color:var(--mid)">—</div><div class="lbl">Healing in Colour profile deleted</div><div class="note">Fee conflict gone</div></div>
       </div>
-      <p class="where"><b>Where:</b> Wix → Settings → SEO → homepage title tag. Change it to:</p>
-      <div class="codebox"><div class="cb-head"><span class="cb-label">Homepage title tag</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">South Asian Therapist in Burnaby &amp; Vancouver | Sentient Counselling</pre></div>
-      <p class="where">You serve both, but your address is Burnaby, claiming only Vancouver means you rank strongly in neither.</p>
-    </div>
-
-    <div class="fix">
-      <div class="fix-head">
-        <div><div class="fix-n">Fix 5</div><h3>Fix Crunchbase</h3></div>
-        <span class="tag tag-sage">5 minutes</span>
-      </div>
-      <p class="where"><b>Where:</b> crunchbase.com → claim your profile → remove "EMDR" unless you actually offer it.</p>
-      <p class="where">One consistent story across every listing is what makes AI models confidently recommend you.</p>
     </div>
 
     <div class="nextstep">
       <div class="ns-tag">▶ Your next step</div>
-      <p>Ship all five, then re-audit. Next audit re-checks whether Google has re-crawled the fixed pages, whether the new listings are live, and scores the same eight rows so week-over-week comparison stays clean.</p>
+      <p style="margin-bottom:10px;">Three of the four open items are confirmations, not work. Paste this to close them in one pass:</p>
+      <div class="codebox"><div class="cb-head"><span class="cb-label">Prompt</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">Check the live Sentient Counselling site and Google Business Profile and confirm three things for me: (1) is the "Counselling in Burnaby" wording actually published on the homepage contact section, or still sitting in the Wix editor, (2) is the Healing in Colour badge still in the site footer, that profile is deleted so the badge needs to go, and (3) is the GBP listing complete, description, services and booking link. Report each as done or not done, and give me the exact click path to fix any that are not.</pre></div>
     </div>
   </div>
 
   <!-- ===== PANEL 5 · LIVE REPORT ===== -->
   <div class="panel">
-    <div class="panel-head"><div><h2>📈 The Live Report</h2></div></div>
-    <p class="panel-sub">SEO only improves over time, so track the trend, not a snapshot. <strong>Week 1 of the trend is on the board, the line starts at Audit #2.</strong></p>
-    <div class="tools-live"><span class="tool-chip">Live artifact</span><span class="tool-chip off">Scheduled task, not set</span><span class="tool-chip off">Search Console, not connected</span></div>
+    <div class="panel-head"><div><h2>📈 The Live Report</h2></div><span class="tag tag-berry" style="font-size:11.5px;">Week 3 closed → Week 4 active</span></div>
+    <p class="panel-sub">Two audits on the board. Scores moved first, search data moves second, that lag is normal and expected to close in Week 5 to 6.</p>
+    <div class="tools-live"><span class="tool-chip">Search Console, verified</span><span class="tool-chip">Google Business Profile</span><span class="tool-chip off">Google Ads, pending launch</span></div>
     <div class="section">
       <div class="chart-grid">
-        <div class="card"><h3 style="margin-bottom:6px;">Baseline scorecard, all eight rows</h3><p style="margin-bottom:10px;"><span style="color:var(--burgundy);font-weight:700;">●</span> under 5 &nbsp;&nbsp;<span style="color:#B45309;font-weight:700;">●</span> 5 to 6 &nbsp;&nbsp;<span style="color:var(--sage);font-weight:700;">●</span> 7 and up</p><div class="chart-box" id="scoreChart"></div></div>
-        <div class="card"><h3 style="margin-bottom:6px;">Organic clicks per week</h3><p style="margin-bottom:10px;">Waiting on Search Console</p>
-          <div class="empty-state">
-            <div class="es-icon">🔌</div>
-            <p style="font-size:12.5px;color:var(--dark);font-weight:600;margin-bottom:4px;">No click data yet</p>
-            <p style="font-size:11.5px;">Connect Search Console, paste a Performance export (last 3 months), or let me drive Claude for Chrome into Search Console and read the numbers directly.</p>
+        <div class="card"><h3 style="margin-bottom:6px;">Baseline vs now, all seven rows</h3><p style="margin-bottom:10px;"><span style="color:#C3D2E4;font-weight:700;">●</span> 17 Aug baseline &nbsp;&nbsp;<span style="color:var(--berry);font-weight:700;">●</span> 18 Aug, Week 3 closed</p><div class="chart-box" id="scoreChart"></div></div>
+        <div class="card"><h3 style="margin-bottom:6px;">Overall movement</h3>
+          <div style="display:flex;gap:22px;flex-wrap:wrap;margin:14px 0 6px;">
+            <div><div style="font-family:var(--font-display);font-size:38px;font-weight:800;color:var(--sage);line-height:1;">6.5</div><div style="font-size:11.5px;color:var(--mid);margin-top:4px;">Google, from 4</div></div>
+            <div><div style="font-family:var(--font-display);font-size:38px;font-weight:800;color:#B45309;line-height:1;">5.5</div><div style="font-size:11.5px;color:var(--mid);margin-top:4px;">AI, from 5</div></div>
           </div>
+          <p style="margin-top:10px;">Google moved 2.5 points in one cycle because nine on-page and local fixes shipped together. AI moved only 0.5 because the two gains, entity presence and fact consistency, were partly offset by the deliberate loss of a directory citation.</p>
+          <p style="margin-top:10px;">The next cycle should be the reverse: SAT.org lifts AI, while Google waits on a re-crawl.</p>
         </div>
       </div>
     </div>
     <div class="section">
       <div class="section-label">Audit log</div>
       <div class="card">
-        <div class="log-item"><div class="log-date">17 Aug</div><div class="log-fix">Audit #1, baseline set across eight rows</div><div class="log-result">Google 4/10 · AI 5/10</div></div>
-        <div class="log-item"><div class="log-date">Next</div><div class="log-fix">Re-crawl fixed pages, verify new listings are live, re-score the same eight rows</div><div class="log-result">Audit #2</div></div>
+        <div class="log-item"><div class="log-date">18 Aug</div><div class="log-fix">Week 3 closed, 9 fixes live, Search Console verified, GBP live at 5.0★ ×8</div><div class="log-result">Google 6.5 · AI 5.5</div></div>
+        <div class="log-item"><div class="log-date">17 Aug</div><div class="log-fix">Audit #1, baseline set across eight rows</div><div class="log-result">Google 4 · AI 5</div></div>
+        <div class="log-item"><div class="log-date">Week 4</div><div class="log-fix">SAT.org listing, Google Ads launch, 4 confirmations</div><div class="log-result">Active</div></div>
+        <div class="log-item"><div class="log-date">Week 5</div><div class="log-fix">Re-score all rows, add paid rows, check AI Overview citation</div><div class="log-result">Next audit</div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">New rows starting Week 4</div>
+      <table class="brand-table">
+        <thead><tr><th>Row</th><th>Value</th><th>Source</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td class="kw">Paid: spend / clicks / CPC</td><td class="mono">—</td><td>Google Ads</td><td><span class="tag tag-neutral">Pending ad launch</span></td></tr>
+          <tr><td class="kw">Paid: conversions</td><td class="mono">—</td><td>Google Ads → /free-consultation</td><td><span class="tag tag-neutral">Pending ad launch</span></td></tr>
+          <tr class="highlight"><td class="kw">GBP interactions</td><td class="mono">—</td><td>Google Business Profile</td><td><span class="tag tag-amber">Now blends organic + paid</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11.5px;margin-top:8px;">Once ads run, GBP interactions stop being a clean organic signal. Read them alongside the paid rows, not as proof that SEO moved.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">👁 Watch list, Week 5 audit</div>
+      <div class="checklist">
+        <div class="ci"><div class="ic">·</div><div class="lbl">CTR, currently 0.6%</div><div class="note">Target 3%</div></div>
+        <div class="ci"><div class="ic">·</div><div class="lbl">First clicks on Burnaby queries</div><div class="note">0 clicks / ~165 impr per month</div></div>
+        <div class="ci"><div class="ic">·</div><div class="lbl">Brand position</div><div class="note">4.1 → 1</div></div>
+        <div class="ci"><div class="ic">·</div><div class="lbl">Stale snippets refreshed, placeholder text gone from the index</div><div class="note">Needs re-crawl</div></div>
+        <div class="ci"><div class="ic">·</div><div class="lbl">SAT.org listing live → AI Overview citation check</div><div class="note">Directory + AI</div></div>
       </div>
     </div>
     <div class="nextstep">
       <div class="ns-tag">▶ Your next step, make it auto-update</div>
-      <p style="margin-bottom:10px;">Set a weekly task so the trend fills itself:</p>
-      <div class="codebox"><div class="cb-head"><span class="cb-label">Scheduled-task prompt</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">Every Monday at 8am, re-run my SEO + GEO audit for Sentient Counselling. Score the same eight rows as the 17 Aug baseline: Google indexing, on-page, local, brand clarity, and AI entity presence, directory coverage, fact consistency. Check whether Google has re-crawled the fixed pages and whether my southasiantherapists.org, Psychology Today and Google Business Profile listings are live. Log the scores to my tracking file and message me only if a row moved by 2 points or more.</pre></div>
+      <p style="margin-bottom:10px;">Set the weekly task so Week 5 scores itself:</p>
+      <div class="codebox"><div class="cb-head"><span class="cb-label">Scheduled-task prompt</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">Every Monday at 8am, re-run my SEO + GEO audit for Sentient Counselling and score the same seven rows: Google indexing, on-page, local, brand clarity, and AI entity presence, directory coverage, fact consistency. Pull Search Console for 7-day, 28-day and 3-month windows, clicks, impressions, CTR and average position. Then check my watch list: is CTR moving toward 3%, are Burnaby queries getting their first clicks, has brand position moved from 4.1 toward 1, have stale snippets refreshed with my new title and meta, and is my southasiantherapists.org listing live and getting cited in AI Overviews. Once Google Ads is running, add paid spend, clicks, CPC and conversions as separate rows, and flag that GBP interactions now blend organic and paid. Log everything to my tracking file and message me only if a score row moved by 1 point or more, or CTR moved by 0.5 points.</pre></div>
     </div>
   </div>
 
@@ -401,58 +465,64 @@ h1,h2,h3,h4{letter-spacing:-.02em;}
   <div class="panel">
     <div class="panel-head">
       <div><h2>🔗 Directories &amp; Citations</h2></div>
-      <span class="tag tag-berry" style="font-size:11.5px;">4 of 7 live</span>
+      <span class="tag tag-amber" style="font-size:11.5px;">3 live · 1 committed</span>
     </div>
-    <p class="panel-sub">For a local practice, directory listings <em>are</em> the link profile. They're what Google trusts for local ranking and what AI models quote when someone asks for a therapist by city and specialty.</p>
+    <p class="panel-sub">For a local practice, directory listings <em>are</em> the link profile. Coverage is thinner than at baseline, deliberately, and one committed listing brings it back above where it started.</p>
 
     <div class="res-grid section">
-      <div class="res"><div class="res-num" style="color:var(--sage)">4</div><div class="res-lab">Listings live</div></div>
-      <div class="res"><div class="res-num" style="color:var(--burgundy)">3</div><div class="res-lab">Missing, high value</div></div>
-      <div class="res"><div class="res-num" style="color:#B45309">1</div><div class="res-lab">Live with wrong facts</div></div>
-      <div class="res"><div class="res-num">55<span style="font-size:13px;color:var(--mid)">min</span></div><div class="res-lab">To close the gaps</div></div>
+      <div class="res"><div class="res-num" style="color:var(--sage)">3</div><div class="res-lab">Listings live</div></div>
+      <div class="res"><div class="res-num" style="color:var(--berry)">1</div><div class="res-lab">Committed, Week 4</div></div>
+      <div class="res"><div class="res-num" style="color:var(--mid)">1</div><div class="res-lab">Declined, paid</div></div>
+      <div class="res"><div class="res-num" style="color:var(--mid)">1</div><div class="res-lab">Deleted by choice</div></div>
     </div>
 
     <div class="section">
-      <div class="section-label">Every source, ranked by what it does for you</div>
+      <div class="section-label">Every source, and where it stands</div>
       <table class="brand-table">
         <thead><tr><th>Source</th><th>Status</th><th>Why it matters</th><th>Action</th></tr></thead>
         <tbody>
-          <tr class="highlight"><td class="kw">southasiantherapists.org</td><td><span class="tag tag-burg">Missing</span></td><td>Largest South Asian therapist directory. Its BC page ranks top for your money keyword and gets cited by ChatGPT and Perplexity</td><td>Fix 3 · 20 min</td></tr>
-          <tr><td class="kw">Google Business Profile</td><td><span class="tag tag-burg">Not found</span></td><td>Maps, "counsellor near me," and AI Overviews all read from it</td><td>Fix 2 · 30 min</td></tr>
-          <tr class="highlight"><td class="kw">Psychology Today</td><td><span class="tag tag-burg">Missing</span></td><td>The other directory AI cites most for therapist queries</td><td>Add listing</td></tr>
-          <tr><td class="kw">Crunchbase</td><td><span class="tag tag-amber">Wrong facts</span></td><td>Says EMDR; your site says Somatic Experiencing (Basic). Conflicts dilute you in AI answers</td><td>Fix 5 · 5 min</td></tr>
-          <tr class="highlight"><td class="kw">Healing in Colour</td><td><span class="tag tag-sage">Live ✓</span></td><td>Carries your real fees, $75 low-cost and $140 regular. This is your canonical bio</td><td>Reuse word-for-word</td></tr>
-          <tr><td class="kw">BCACC directory</td><td><span class="tag tag-sage">Live ✓</span></td><td>Professional credential source, strong trust signal for both Google and AI</td><td>Keep current</td></tr>
-          <tr class="highlight"><td class="kw">Lumino Health</td><td><span class="tag tag-sage">Live ✓</span></td><td>Insurance-adjacent discovery, real referral traffic</td><td>Keep current</td></tr>
+          <tr class="highlight"><td class="kw">southasiantherapists.org</td><td><span class="tag tag-berry">Committed, Week 4</span></td><td>Largest South Asian therapist directory. Its BC page ranks top for your money keyword and gets cited by ChatGPT and Perplexity</td><td>Ship this week</td></tr>
+          <tr><td class="kw">Google Business Profile</td><td><span class="tag tag-sage">Live ✓</span></td><td>Maps, "counsellor near me" and AI Overviews all read from it. 8 reviews at 5.0★, map pin confirmed, first post published</td><td>Confirm description, services, booking link</td></tr>
+          <tr class="highlight"><td class="kw">BCACC directory</td><td><span class="tag tag-sage">Live ✓</span></td><td>Professional credential source, strong trust signal for both Google and AI</td><td>Keep current</td></tr>
+          <tr><td class="kw">Lumino Health</td><td><span class="tag tag-sage">Live ✓</span></td><td>Insurance-adjacent discovery, real referral traffic</td><td>Keep current</td></tr>
+          <tr class="highlight"><td class="kw">Psychology Today</td><td><span class="tag tag-neutral">Declined, paid</span></td><td>The other directory AI cites most for therapist queries</td><td>Revisit when budget allows</td></tr>
+          <tr><td class="kw">Healing in Colour</td><td><span class="tag tag-neutral">Profile deleted</span></td><td>Was carrying conflicting fee information</td><td>Remove the badge still in your site footer</td></tr>
+          <tr class="highlight"><td class="kw">Crunchbase</td><td><span class="tag tag-sage">Conflict cleared</span></td><td>Modality now consistent with the site</td><td>Keep current</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="nextstep">
       <div class="ns-tag">▶ Your next step</div>
-      <p style="margin-bottom:10px;">Use one bio everywhere. Paste this to generate it once and reuse it across all three missing listings:</p>
-      <div class="codebox"><div class="cb-head"><span class="cb-label">Prompt</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">Take my Healing in Colour bio for Sentient Counselling and turn it into one canonical listing kit I can paste everywhere: a 50-word short bio, a 150-word long bio, and a facts block with address (201-3701 E Hastings St, Burnaby), languages (English, Bengali, Hindi), modality (Somatic Experiencing, Basic) and fees ($140 regular, $75 low-cost). Keep every fact identical across all three versions, that consistency is what makes AI models recommend me confidently.</pre></div>
+      <p style="margin-bottom:10px;">Use one bio everywhere so the SAT.org listing strengthens the entity instead of adding a new inconsistency:</p>
+      <div class="codebox"><div class="cb-head"><span class="cb-label">Prompt</span><button class="copybtn" onclick="copyCode(this)">Copy</button></div><pre class="code-pre">Build me one canonical listing kit for Sentient Counselling that I can paste into southasiantherapists.org and anywhere else: a 50-word short bio, a 150-word long bio, and a facts block with address (201-3701 E Hastings St, Burnaby), phone (604 358 7905), languages (English, Bengali, Hindi), modality (Somatic Experiencing, Basic), fees ($140 regular, $75 low-cost) and the booking link (/free-consultation). Every fact must be identical across all three versions and match my site and Google Business Profile exactly, that consistency is what lifts my fact-consistency score and makes AI models recommend me confidently.</pre></div>
     </div>
   </div>
 
-  <div class="foot">Audit #1 · 17 August 2026 · re-score the same eight rows every week so the trend stays comparable</div>
+  <div class="foot">Week 3 closed 18 August 2026 · Week 4 active · same seven rows re-scored every week so the trend stays comparable</div>
 
 </div>
 
 <script>
-/* Baseline scores, Audit #1, 17 Aug 2026 */
+/* Scores: 17 Aug baseline vs 18 Aug, Week 3 closed */
 const scores=[
-  {label:'Indexing',      group:'Google', v:7},
-  {label:'On-page',       group:'Google', v:3},
-  {label:'Local',         group:'Google', v:3},
-  {label:'Brand clarity', group:'Google', v:4},
-  {label:'Entity presence',   group:'AI', v:6},
-  {label:'Directory coverage',group:'AI', v:4},
-  {label:'Fact consistency',  group:'AI', v:5}
+  {label:'Indexing',           base:7, now:7},
+  {label:'On-page',            base:3, now:7.5},
+  {label:'Local',              base:3, now:6},
+  {label:'Brand clarity',      base:4, now:6},
+  {label:'Entity presence',    base:6, now:7},
+  {label:'Directory coverage', base:4, now:3.5},
+  {label:'Fact consistency',   base:5, now:6.5}
 ];
-const berry='#0B5ED7',sage='#16A34A',amber='#B45309',red='#B91C1C',mid='#5A6E88',grid='rgba(12,30,54,0.08)';
+/* Search Console, organic only */
+const windows=[
+  {label:'3 months', ctr:0.9},
+  {label:'28 days',  ctr:0.6},
+  {label:'7 days',   ctr:0.4}
+];
+const CTR_TARGET=3;
+const berry='#0B5ED7',sage='#16A34A',amber='#B45309',red='#B91C1C',mid='#5A6E88',pale='#C3D2E4',grid='rgba(12,30,54,0.08)';
 const el=id=>document.getElementById(id);
-const bandColor=v=>v>=7?sage:(v>=5?amber:red);
 
 function switchTab(i){
   document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i));
@@ -466,23 +536,47 @@ function copyCode(btn){
   function sel(){const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done();}catch(e){}s.removeAllRanges();}
 }
 
-/* horizontal baseline bar chart */
+/* grouped horizontal bars: baseline vs now */
 (function(){
-  const W=560,H=300,padL=118,padR=34,padT=16,padB=28;
+  const W=560,H=320,padL=118,padR=40,padT=18,padB=28;
   const n=scores.length,x0=padL,x1=W-padR,y0=padT,y1=H-padB;
-  const rowH=(y1-y0)/n,bh=Math.min(17,rowH*0.54);
+  const rowH=(y1-y0)/n,bh=Math.min(9,rowH*0.3),gap=3;
   const X=v=>x0+(v/10)*(x1-x0);
   let g='';
-  [0,2,4,6,8,10].forEach(v=>{const x=X(v);g+=`<line x1="${x}" y1="${y0}" x2="${x}" y2="${y1}" stroke="${grid}"/><text x="${x}" y="${H-10}" font-size="8.5" fill="${mid}" text-anchor="middle">${v}</text>`;});
+  [0,2,4,6,8,10].forEach(v=>{const x=X(v);g+='<line x1="'+x+'" y1="'+y0+'" x2="'+x+'" y2="'+y1+'" stroke="'+grid+'"/><text x="'+x+'" y="'+(H-10)+'" font-size="8.5" fill="'+mid+'" text-anchor="middle">'+v+'</text>';});
   scores.forEach((s,i)=>{
-    const cy=y0+rowH*(i+0.5),c=bandColor(s.v);
-    g+=`<text x="${x0-10}" y="${cy+3}" font-size="10" fill="${mid}" text-anchor="end">${s.label}</text>`;
-    g+=`<rect x="${x0}" y="${(cy-bh/2).toFixed(1)}" width="${(x1-x0).toFixed(1)}" height="${bh}" rx="${(bh/2).toFixed(1)}" fill="${grid}"/>`;
-    g+=`<rect x="${x0}" y="${(cy-bh/2).toFixed(1)}" width="${(X(s.v)-x0).toFixed(1)}" height="${bh}" rx="${(bh/2).toFixed(1)}" fill="${c}"/>`;
-    g+=`<text x="${(X(s.v)+7).toFixed(1)}" y="${cy+3.5}" font-size="10" font-weight="700" fill="${c}">${s.v}</text>`;
+    const cy=y0+rowH*(i+0.5);
+    const yB=cy-bh-gap/2, yN=cy+gap/2;
+    const moved=s.now-s.base;
+    const c=moved<0?red:(s.now>=7?sage:(s.now>=5?amber:red));
+    g+='<text x="'+(x0-10)+'" y="'+(cy+3)+'" font-size="10" fill="'+mid+'" text-anchor="end">'+s.label+'</text>';
+    g+='<rect x="'+x0+'" y="'+yB.toFixed(1)+'" width="'+(X(s.base)-x0).toFixed(1)+'" height="'+bh+'" rx="'+(bh/2)+'" fill="'+pale+'"/>';
+    g+='<rect x="'+x0+'" y="'+yN.toFixed(1)+'" width="'+(X(s.now)-x0).toFixed(1)+'" height="'+bh+'" rx="'+(bh/2)+'" fill="'+c+'"/>';
+    const lbl=(moved>0?'▲':(moved<0?'▼':'—'))+(moved!==0?Math.abs(moved):'');
+    g+='<text x="'+(Math.max(X(s.base),X(s.now))+7).toFixed(1)+'" y="'+(cy+3.5)+'" font-size="9.5" font-weight="700" fill="'+(moved<0?red:(moved>0?sage:mid))+'">'+s.now+' '+lbl+'</text>';
   });
-  g+=`<text x="${x0}" y="${y0-4}" font-size="8.5" fill="${mid}">Google rows 1 to 4 · AI rows 5 to 7 · scored out of 10</text>`;
-  el('scoreChart').innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">${g}</svg>`;
+  g+='<text x="'+x0+'" y="'+(y0-5)+'" font-size="8.5" fill="'+mid+'">Scored out of 10 · pale bar = 17 Aug baseline</text>';
+  el('scoreChart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">'+g+'</svg>';
+})();
+
+/* CTR by window vs 3% target */
+(function(){
+  const W=520,H=240,padL=64,padR=24,padT=18,padB=30;
+  const n=windows.length,x0=padL,x1=W-padR,y0=padT,y1=H-padB,max=3.4;
+  const Y=v=>y1-(v/max)*(y1-y0);
+  const bw=(x1-x0)/n*0.42;
+  let g='';
+  [0,1,2,3].forEach(v=>{const y=Y(v);g+='<line x1="'+x0+'" y1="'+y+'" x2="'+x1+'" y2="'+y+'" stroke="'+grid+'"/><text x="'+(x0-8)+'" y="'+(y+3)+'" font-size="8.5" fill="'+mid+'" text-anchor="end">'+v+'%</text>';});
+  const yt=Y(CTR_TARGET);
+  g+='<line x1="'+x0+'" y1="'+yt+'" x2="'+x1+'" y2="'+yt+'" stroke="'+sage+'" stroke-width="1.5" stroke-dasharray="5 4"/>';
+  g+='<text x="'+x1+'" y="'+(yt-6)+'" font-size="9" font-weight="700" fill="'+sage+'" text-anchor="end">target 3%</text>';
+  windows.forEach((w,i)=>{
+    const cx=x0+(i+0.5)/n*(x1-x0),y=Y(w.ctr);
+    g+='<rect x="'+(cx-bw/2).toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(y1-y).toFixed(1)+'" rx="3" fill="'+berry+'"/>';
+    g+='<text x="'+cx.toFixed(1)+'" y="'+(y-6).toFixed(1)+'" font-size="10" font-weight="700" fill="'+berry+'" text-anchor="middle">'+w.ctr+'%</text>';
+    g+='<text x="'+cx.toFixed(1)+'" y="'+(H-10)+'" font-size="9" fill="'+mid+'" text-anchor="middle">'+w.label+'</text>';
+  });
+  el('ctrChart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">'+g+'</svg>';
 })();
 </script>
 
